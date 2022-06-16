@@ -14,8 +14,8 @@ from write_labelfile import write_labelfile
 from utils import ex_from_one_hot, split_EX_VA_AU
 from tqdm import tqdm
 import os
-
-model_path = 'TSAV416k.pth.tar' # path to the model
+batch = 20 
+model_path = '/home/alex/Desktop/TSAV_Sub4_544k.pth.tar' # path to the model
 result_path = 'results'# path where the result .txt files should be stored
 database_path = 'aff2_processed/'  # path where the database was created (images, audio...) see create_database.py
 # should be the same path
@@ -36,9 +36,8 @@ class SubsetSequentialSampler(Sampler):
 if __name__ == '__main__':
 
     if torch.cuda.is_available():
-        import torch.backends.cudnn as cudnn
-        cudnn.enabled = True
         device = torch.device("cuda")
+        print("cuda")
     else:
         device = torch.device("cpu")
         print('cpu selected!')
@@ -64,7 +63,7 @@ if __name__ == '__main__':
     print('Validation set length: ' + str(sum(dataset.val_ids)))
     print('Test set length: ' + str(sum(dataset.test_ids)))
     sampler = SubsetSequentialSampler(np.nonzero(testvalids)[0])
-    loader = DataLoader(dataset, batch_size=32, sampler=sampler, num_workers=8, pin_memory=False, drop_last=False)
+    loader = DataLoader(dataset, batch_size=batch, sampler=sampler, num_workers=8, pin_memory=True, drop_last=False)
 
     output = torch.zeros((len(dataset), 17), dtype=torch.float32)
     #labels = torch.zeros((len(dataset), 17), dtype=torch.float32)

@@ -34,11 +34,11 @@ from sort_non_competition_set import sort_videos
 # paths to original aff2 videos
 use_comp_folders = True
 if use_comp_folders:
-    video_paths = ['/data/face/Aff2/tmp/batch1', '/data/face/Aff2/tmp/batch2']
+    video_paths = ['/home/alex/Desktop/batch1', '/home/alex/Desktop/batch2']
 else:
     video_paths = ['/data/face/Aff2/tmp/NON_Competition/ALLVIDEOS'] # just all videos in one folder
 
-csv_file_path = 'video_info.txt'
+csv_file_path = '/home/alex/detection/video_info.txt'
 output_dir = 'aff2_processed/'   # this is where the extracted data will be stored (in /extracted)
 
 def create_database():

@@ -4,6 +4,8 @@ Code from
 Felix Kuhnke and Lars Rumberg and Joern Ostermann
 Please see https://github.com/kuhnkeF/ABAW2020TNT
 """
+
+from torch.utils.data import Dataset
 import os
 from PIL import Image
 from tqdm import tqdm
@@ -15,7 +17,6 @@ import subprocess
 from utils import *
 from clip_transforms import *
 from video import Video
-from torch.utils.data import Dataset
 
 class Aff2CompDataset(Dataset):
     def __init__(self, root_dir=''):
@@ -334,7 +335,7 @@ class Aff2CompDataset(Dataset):
                                              num_frames=min(self.sample_len_frames,
                                                             max(int((self.time_stamps[index]/1000) * self.sample_rate),
                                                                 int(self.window_size * self.sample_rate))),
-                                             offset=max(int((self.time_stamps[index]/1000) * self.sample_rate
+                                             frame_offset=max(int((self.time_stamps[index]/1000) * self.sample_rate
                                                             - self.sample_len_frames + self.audio_shift_samples), 0))
 
 
