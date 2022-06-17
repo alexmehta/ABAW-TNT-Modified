@@ -5,6 +5,13 @@ Felix Kuhnke and Lars Rumberg and Joern Ostermann
 Please see https://github.com/kuhnkeF/ABAW2020TNT
 """
 
+"""
+Code from
+"Two-Stream Aural-Visual Affect Analysis in the Wild"
+Felix Kuhnke and Lars Rumberg and Joern Ostermann
+Please see https://github.com/kuhnkeF/ABAW2020TNT
+"""
+
 from torch.utils.data import Dataset
 import os
 from PIL import Image
@@ -81,8 +88,8 @@ class Aff2CompDataset(Dataset):
                 meta['extension'] = get_extension(video)
                 num_frames_video = meta['num_frames']
                 audio_file = os.path.splitext(video)[0] + '.wav'
-                si, ei = torchaudio.info(audio_file)
-                assert si.rate == 44100
+                si = torchaudio.info(audio_file)
+                assert si.sample_rate== 44100
                 video_ts_file = os.path.join(meta['path'], meta['filename'] + '_video_ts.txt')
                 if os.path.isfile(video_ts_file):
                     pass
@@ -173,6 +180,7 @@ class Aff2CompDataset(Dataset):
                 self.mask_available = meta['mask_available']
                 self.test_ids = meta['test_ids']
                 self.video_db_nr = meta['video_db_nr']
+                print(meta['label_au'])
 
         self.validation_video_ids()
         self.test_video_ids()
@@ -357,6 +365,12 @@ class Aff2CompDataset(Dataset):
             audio = _audio
         data['audio'] = audio
 
+        data['frame_id'] = self.frame_id[index]
+        data['label_au'] = self.label_au[index]
+        print(data['label_au'])
+        data['label_ex'] = self.label_ex[index]
+        data['label_va'] = self.label_va[index]
+        print("before returned " + str(type(data)))
         return data
 
     def __len__(self):
@@ -364,3 +378,11 @@ class Aff2CompDataset(Dataset):
 
     def __add__(self, other):
         raise NotImplementedError
+
+    def get_annotations(self):
+        data = {}
+        data['frame_id'] = self.frame_id
+        data['label_au'] = self.label_au
+        data['label_ex'] = self.label_ex
+        data['label_va'] = self.label_va
+        return data
