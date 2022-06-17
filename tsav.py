@@ -74,6 +74,7 @@ class TwoStreamAuralVisualModel(nn.Module):
     def forward(self, x):
         audio = x['audio_features']
         clip = x['clip']
+        print("shape " + str(clip.shape))
 
         audio_model_features = self.audio_model(audio)
         video_model_features = self.video_model(clip)

@@ -134,6 +134,12 @@ class Aff2CompDataset(Dataset):
                         frame_id = int(os.path.splitext(image_filename)[0])
                         self.frame_id.append(frame_id)
                         # add your own label loading here if you want to use this for training
+                        # if(split!="train" or split!="val"):
+                        #     self.label_au.append(none)
+                        #     self.label_ex.append(none)
+                        #     self.label_va.append(none)
+                        # else:
+                        #     self.label_au.append()
                         self.label_au.append(None)
                         self.label_ex.append(None)
                         self.label_va.append(None)
@@ -180,7 +186,7 @@ class Aff2CompDataset(Dataset):
                 self.mask_available = meta['mask_available']
                 self.test_ids = meta['test_ids']
                 self.video_db_nr = meta['video_db_nr']
-                print(meta['label_au'])
+                # print(meta['label_au'])
 
         self.validation_video_ids()
         self.test_video_ids()
@@ -365,12 +371,12 @@ class Aff2CompDataset(Dataset):
             audio = _audio
         data['audio'] = audio
 
-        data['frame_id'] = self.frame_id[index]
-        data['label_au'] = self.label_au[index]
-        print(data['label_au'])
-        data['label_ex'] = self.label_ex[index]
-        data['label_va'] = self.label_va[index]
-        print("before returned " + str(type(data)))
+        # data['frame_id'] = self.frame_id[index]
+        # data['label_au'] = self.label_au[index]
+        # print("AU "  + str(data['label_au']))
+        # data['label_ex'] = self.label_ex[index]
+        # data['label_va'] = self.label_va[index]
+        # print("before returned " + str(type(data)))
         return data
 
     def __len__(self):
