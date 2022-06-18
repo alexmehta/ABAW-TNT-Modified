@@ -60,6 +60,8 @@ class Aff2CompDatasetNew(Dataset):
         self.videos += [each for each in os.listdir(root_dir) if each.endswith(".mp4")]
         self.metadata = []
         self.metadata += [each for each in os.listdir(root_dir) if each.endswith(".json")]
+        self.audio_dir = []
+        self.audio_dir +=[each for each in os.listdir(root_dir) if each.endswith(".wav")]
         self.extracted_frames = []
         self.extracted_frames += [each for each in os.listdir(os.path.join(root_dir , "extracted"))]
 
@@ -79,11 +81,16 @@ class Aff2CompDatasetNew(Dataset):
         self.audio_shift_sec = 5
         self.audio_shift_samples = self.audio_shift_sec * self.sample_rate
         #transforms 
-
+        self.audio_transform = torchaudio.transforms.MelSpectrogram(sample_rate=self.sample_rate, n_mels=64,
+                                                                    n_fft=num_fft,
+                                                                    win_length=int(self.window_size * self.sample_rate),
+                                                                    hop_length=int(self.window_stride
+                                                                                   * self.sample_rate),
+                                                                    window_fn=window_fn)
         train_csv = os.path.join(mtl_path, "train_set.txt" )
         test_csv = os.path.join(mtl_path, "test_set.txt" )
-        self.training = []
-        self.training += self.create_inputs(train_csv)
+        self.dataset = []
+        self.dataset += self.create_inputs(train_csv)
         # self.testing = []
         # self.testing += self.create_inputs(test_csv)
     def create_inputs(self,csv_path):
@@ -106,16 +113,48 @@ class Aff2CompDatasetNew(Dataset):
             expected_output['arousal'] = arousal
             expected_output['expressions'] = expressions
             expected_output['action_units'] = action_units
+            expected_output['fps'] = self.get_fps(self.find_video(expected_output['vid_name']))
             outputs.append(expected_output)
+        self.time_stamps = []
         return outputs
+    def find_video(self,video_info):
+        for video_name in self.videos:
+            if(video_name.startswith(video_info[0])):
+                return os.path.join(self.root_dir,video_name)
+
+
+    def get_fps(self,video):
+        video = cv2.VideoCapture(video)
+
+        return video.get(cv2.CAP_PROP_FPS)
     def __getitem__(self, index):
-        d = self.training[index]
+        d = self.dataset[index]
         d['clip']  = self.add_video(d,self.extracted_frames)
-        
+        d['audio']  = self.add_audio(d)
         return d
     def __len__(self):
-        return len(self.training)
-    # def add_audio(info):
+        return len(self.dataset)
+    def __add__(self,dict):
+        self.dataset.append(dict) 
+    def add_audio(self,dictionary):
+        # get audio
+        # steps
+        # #1 get a spectrogram of entire clip
+        #
+        audio_file = self.find_audio(dictionary['vid_name'])
+        print(audio_file)
+        audio, sample_rate = torchaudio.load(audio_file)
+        
+        print(sample_rate)
+        print(dictionary['fps'])
+        self.audio_transform(audio)
 
 
+
+    def get_slice(self,audio,frame_offset,length):
+        return audio[:,frame_offset:frame_offset+length]
+    def find_audio(self,file_info):
+        for mp3 in self.audio_dir:
+            if(file_info[0] in mp3):
+                return os.path.join(self.root_dir ,mp3)
         

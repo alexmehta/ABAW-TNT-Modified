@@ -99,6 +99,7 @@ class Aff2CompDataset(Dataset):
                     command = 'mkvmerge -o ' + mkvfile + ' ' + videofile
                     subprocess.call(command, shell=True)
                     command = 'mkvextract ' + mkvfile + ' timestamps_v2 0:' + video_ts_file
+                    
                     subprocess.call(command, shell=True)
                     os.remove(mkvfile)
                 with open(video_ts_file, 'r') as f:
