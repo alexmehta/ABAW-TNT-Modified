@@ -13,6 +13,11 @@ def split_EX_VA_AU(inp):
     AU = inp[:, 9:]
     return EX, VA, AU
 
+def deepcopy(dict):
+    d = {}
+    for key in dict.keys():
+        d[key] = dict[key]
+
 def ex_from_one_hot(ex_arr):
     assert isinstance(ex_arr, np.ndarray)
     assert ex_arr.shape[1] == 7

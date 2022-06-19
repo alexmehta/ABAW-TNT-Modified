@@ -52,7 +52,7 @@ class AudioModel(nn.Module):
         if pretrained == True:
             self.resnet.conv1.weight.data.copy_(torch.mean(old_layer.weight.data, dim=1, keepdim=True)) # mean channel
 
-        self.modes = ["audio_features"]
+        self.modes = ["audio"]
 
     def forward(self, x):
         return self.resnet(x)
@@ -66,16 +66,17 @@ class TwoStreamAuralVisualModel(nn.Module):
         self.fc = self.fc = nn.Sequential(nn.Dropout(0.0),
                                           nn.Linear(in_features=self.audio_model.resnet.fc._modules['1'].in_features +
                                                                 self.video_model.r2plus1d.fc._modules['1'].in_features,
-                                                    out_features=17))
-        self.modes = ['clip', 'audio_features']
+                                                    out_features=15))
+        self.modes = ['clip', 'audio']
         self.audio_model.resnet.fc = Dummy()
         self.video_model.r2plus1d.fc = Dummy()
 
     def forward(self, x):
-        audio = x['audio_features']
+        audio = x['audio']
         clip = x['clip']
         print("shape " + str(clip.shape))
 
+        print("shape " + str(audio.shape))
         audio_model_features = self.audio_model(audio)
         video_model_features = self.video_model(clip)
 

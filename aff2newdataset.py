@@ -12,6 +12,8 @@ from utils import *
 from clip_transforms import *
 from video import Video
 import csv
+
+import copy
 class Aff2CompDatasetNew(Dataset):
     # this code here is very inefficent (but works well). 
     def add_video(self,info,extracted_frames_list):
@@ -25,6 +27,8 @@ class Aff2CompDatasetNew(Dataset):
     def take_mask(self, info, folder, image_list, i, image):
         before = i
         after = len(image_list) - i - 1
+        info['start_frame'] = before
+        info['end_frame'] = after
         info['path'] = os.path.join(self.root_dir,"extracted",folder,image)
                     #this is where some experiments come in handy (how do we want to split the 8 frames) 
 
@@ -44,9 +48,6 @@ class Aff2CompDatasetNew(Dataset):
                 except:
                     X = 0
                     # print("there was an issue, but we just leave a blask mask :)")
-
-        else:
-            return None
         return  self.clip_transform(clip)
 
     def __init__(self,root_dir='',mtl_path = 'mtl_data/'):
@@ -75,18 +76,29 @@ class Aff2CompDatasetNew(Dataset):
         self.window_stride = 10e-3
         self.sample_rate = 44100
         num_fft = 2 ** math.ceil(math.log2(self.window_size * self.sample_rate))
+        self.n_fft = 1024
+        
         window_fn = torch.hann_window
+        self.win_length = None
+        self.hop_length = 512
+        self.n_mels = 128
         self.sample_len_secs = 10
         self.sample_len_frames = self.sample_len_secs * self.sample_rate
         self.audio_shift_sec = 5
         self.audio_shift_samples = self.audio_shift_sec * self.sample_rate
         #transforms 
-        self.audio_transform = torchaudio.transforms.MelSpectrogram(sample_rate=self.sample_rate, n_mels=64,
-                                                                    n_fft=num_fft,
-                                                                    win_length=int(self.window_size * self.sample_rate),
-                                                                    hop_length=int(self.window_stride
-                                                                                   * self.sample_rate),
-                                                                    window_fn=window_fn)
+        self.audio_transform = torchaudio.transforms.MelSpectrogram( sample_rate=self.sample_rate  ,n_fft=self.n_fft,
+        win_length=self.win_length,
+        hop_length=self.hop_length,
+        center=True,
+        pad_mode="reflect",
+        power=2.0,
+        norm='slaney',
+        onesided=True,
+        n_mels=self.n_mels,
+       )
+        self.audio_spec_transform = ComposeWithInvert([AmpToDB(), Normalize(mean=[-14.8], std=[19.895])])
+
         train_csv = os.path.join(mtl_path, "train_set.txt" )
         test_csv = os.path.join(mtl_path, "test_set.txt" )
         self.dataset = []
@@ -113,7 +125,7 @@ class Aff2CompDatasetNew(Dataset):
             expected_output['arousal'] = arousal
             expected_output['expressions'] = expressions
             expected_output['action_units'] = action_units
-            expected_output['fps'] = self.get_fps(self.find_video(expected_output['vid_name']))
+            # expected_output['fps'] = self.get_fps(self.find_video(expected_output['vid_name']))
             outputs.append(expected_output)
         self.time_stamps = []
         return outputs
@@ -122,32 +134,34 @@ class Aff2CompDatasetNew(Dataset):
             if(video_name.startswith(video_info[0])):
                 return os.path.join(self.root_dir,video_name)
 
-
     def get_fps(self,video):
         video = cv2.VideoCapture(video)
 
         return video.get(cv2.CAP_PROP_FPS)
+    
     def __getitem__(self, index):
         d = self.dataset[index]
+        d = copy.deepcopy(d) 
         d['clip']  = self.add_video(d,self.extracted_frames)
+
         d['audio']  = self.add_audio(d)
-        return d
+        
+        # print(type(d))
+        return d 
     def __len__(self):
         return len(self.dataset)
     def __add__(self,dict):
         self.dataset.append(dict) 
+
     def add_audio(self,dictionary):
-        # get audio
-        # steps
         # #1 get a spectrogram of entire clip
-        #
+        # #2  slice by the dict values for video so they are in perfect sync?
         audio_file = self.find_audio(dictionary['vid_name'])
-        print(audio_file)
         audio, sample_rate = torchaudio.load(audio_file)
-        
-        print(sample_rate)
-        print(dictionary['fps'])
-        self.audio_transform(audio)
+        audiofeatures = self.audio_transform(audio)
+        dictionary['spectrogram'] =audiofeatures[:,:,dictionary['start_frame']:dictionary['end_frame']]
+        dictionary['spectrogram'] = self.audio_spec_transform(dictionary['spectrogram']) 
+        return dictionary['spectrogram']
 
 
 
