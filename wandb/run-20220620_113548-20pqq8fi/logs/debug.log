@@ -22,3 +22,4 @@ config: {}
 2022-06-20 11:35:49,544 INFO    MainThread:48865 [wandb_run.py:_redirect():1776] Redirecting console.
 2022-06-20 11:35:49,545 INFO    MainThread:48865 [wandb_run.py:_redirect():1832] Redirects installed.
 2022-06-20 11:35:49,545 INFO    MainThread:48865 [wandb_init.py:init():688] run started, returning control to user process
+2022-06-20 11:35:54,321 INFO    MainThread:48865 [wandb_watch.py:watch():47] Watching
