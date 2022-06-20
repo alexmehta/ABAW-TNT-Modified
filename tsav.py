@@ -22,7 +22,7 @@ class VideoModel(nn.Module):
         super(VideoModel, self).__init__()
         self.r2plus1d = models.video.r2plus1d_18(pretrained=True)
         self.r2plus1d.fc = nn.Sequential(nn.Dropout(0.0),
-                                         nn.Linear(in_features=self.r2plus1d.fc.in_features, out_features=17))
+                                         nn.Linear(in_features=self.r2plus1d.fc.in_features, out_features=2))
         if num_channels == 4:
             new_first_layer = nn.Conv3d(in_channels=4,
                                         out_channels=self.r2plus1d.stem[0].out_channels,
@@ -44,7 +44,7 @@ class AudioModel(nn.Module):
         super(AudioModel, self).__init__()
         self.resnet = models.resnet18(pretrained=pretrained)
         self.resnet.fc = nn.Sequential(nn.Dropout(0.0),
-                                       nn.Linear(in_features=self.resnet.fc.in_features, out_features=17))
+                                       nn.Linear(in_features=self.resnet.fc.in_features, out_features=8))
 
         old_layer = self.resnet.conv1
         self.resnet.conv1 = nn.Conv2d(1, out_channels=self.resnet.conv1.out_channels,
@@ -63,23 +63,28 @@ class TwoStreamAuralVisualModel(nn.Module):
         super(TwoStreamAuralVisualModel, self).__init__()
         self.audio_model = AudioModel(pretrained=audio_pretrained)
         self.video_model = VideoModel(num_channels=num_channels)
-        self.fc = self.fc = nn.Sequential(nn.Dropout(0.0),
-                                          nn.Linear(in_features=self.audio_model.resnet.fc._modules['1'].in_features +
-                                                                self.video_model.r2plus1d.fc._modules['1'].in_features,
-                                                    out_features=15))
-        self.modes = ['clip', 'audio']
+        # self.fc = self.fc = nn.Sequential(nn.Dropout(0.0),
+        #                                   nn.Linear(in_features=self.audio_model.resnet.fc._modules['1'].in_features +
+        #                                                         self.video_model.r2plus1d.fc._modules['1'].in_features,
+        #                                             out_features=15))
+        self.fc = self.fc = nn.Sequential(nn.Dropout(0.0),nn.Softmax(dim=1),
+                                          nn.Linear(in_features=self.video_model.r2plus1d.fc._modules['1'].in_features,
+                                                    out_features=8))
+ 
+        # self.modes = ['clip', 'audio']
+        self.modes = ['clip']
         self.audio_model.resnet.fc = Dummy()
         self.video_model.r2plus1d.fc = Dummy()
-
     def forward(self, x):
-        audio = x['audio']
+        # audio = x['audio']
         clip = x['clip']
-        print("shape " + str(clip.shape))
-
-        print("shape " + str(audio.shape))
-        audio_model_features = self.audio_model(audio)
+        # print("shape " + str(clip.shape))
+        # print(torch.max(clip))
+        # print("shape " + str(audio.shape))
+        # audio_model_features = self.audio_model(audio)
         video_model_features = self.video_model(clip)
 
-        features = torch.cat([audio_model_features, video_model_features], dim=1)
+        # features = torch.cat([audio_model_features, video_model_features], dim=1)
+        features = video_model_features
         out = self.fc(features)
         return out

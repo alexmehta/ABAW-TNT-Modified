@@ -6,13 +6,16 @@ from tqdm import tqdm
 import numpy as np
 import pickle
 import torchaudio
+import torchvision
 import math
 import subprocess
 from utils import *
 from clip_transforms import *
 from video import Video
 import csv
+import logging
 
+from torchvision import transforms
 import copy
 class Aff2CompDatasetNew(Dataset):
     # this code here is very inefficent (but works well). 
@@ -87,6 +90,8 @@ class Aff2CompDatasetNew(Dataset):
         self.audio_shift_sec = 5
         self.audio_shift_samples = self.audio_shift_sec * self.sample_rate
         #transforms 
+        # self.standardize = transforms.Compose([
+            # transforms.Normalize([0.5,0.5,0.5])])
         self.audio_transform = torchaudio.transforms.MelSpectrogram( sample_rate=self.sample_rate  ,n_fft=self.n_fft,
         win_length=self.win_length,
         hop_length=self.hop_length,
@@ -105,6 +110,15 @@ class Aff2CompDatasetNew(Dataset):
         self.dataset += self.create_inputs(train_csv)
         # self.testing = []
         # self.testing += self.create_inputs(test_csv)
+# create logger with 'spam_application'
+        self.logger = logging.getLogger('spam_application')
+        self.logger.setLevel(logging.CRITICAL)
+        # create file handler which logs even debug messages
+        fh = logging.FileHandler('spam.log')
+        fh.setLevel(logging.CRITICAL)
+
+        self.logger.addHandler(fh)
+
     def create_inputs(self,csv_path):
         labels = []
         with open(csv_path) as csv_file:
@@ -117,8 +131,8 @@ class Aff2CompDatasetNew(Dataset):
             vid_name = row[0].split('/')
             valience = row[1]
             arousal = row[2]
-            expressions = row[3:(3+8)]
-            action_units = row[(3+8):]
+            expressions = row[3]
+            action_units = row[4:]
             expected_output = {}
             expected_output['vid_name'] = vid_name
             expected_output['valience'] = valience
@@ -142,11 +156,11 @@ class Aff2CompDatasetNew(Dataset):
     def __getitem__(self, index):
         d = self.dataset[index]
         d = copy.deepcopy(d) 
-        d['clip']  = self.add_video(d,self.extracted_frames)
-
-        d['audio']  = self.add_audio(d)
         
-        # print(type(d))
+        d['clip']  = self.add_video(d,self.extracted_frames)
+        if(d['clip']==None):
+            del d['clip'] 
+            self.logger.error('missing clip: ' + str(d))
         return d 
     def __len__(self):
         return len(self.dataset)
@@ -160,7 +174,10 @@ class Aff2CompDatasetNew(Dataset):
         audio, sample_rate = torchaudio.load(audio_file)
         audiofeatures = self.audio_transform(audio)
         dictionary['spectrogram'] =audiofeatures[:,:,dictionary['start_frame']:dictionary['end_frame']]
-        dictionary['spectrogram'] = self.audio_spec_transform(dictionary['spectrogram']) 
+        dictionary['spectrogram'] = self.audio_spec_transform(dictionary['spectrogram'])
+        # dictionary['spectrogram'] = torchvision.functional.resize(dictionary['spectrogram'],)
+        # dictionary['spectorgram'] = self.standardize(dictionary['spectrogram'])
+        dictionary['spectrogram'] = transforms.Resize((128,2780))(dictionary['spectrogram'])
         return dictionary['spectrogram']
 
 
