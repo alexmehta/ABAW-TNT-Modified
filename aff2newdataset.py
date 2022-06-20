@@ -19,15 +19,15 @@ from torchvision import transforms
 import copy
 class Aff2CompDatasetNew(Dataset):
     # this code here is very inefficent (but works well). 
-    def add_video(self,info,extracted_frames_list):
+    def add_video(self,info,extracted_frames_list,transform=True):
        for folder in extracted_frames_list:
             if(folder.startswith(info['vid_name'][0])):
                 image_list = os.listdir(os.path.join(self.root_dir,"extracted",folder,"mask"))
                 image_list.sort()
                 for i,image in enumerate(image_list):
                     if(image.startswith(info['vid_name'][1])):
-                        return self.take_mask(info, folder, image_list, i, image)
-    def take_mask(self, info, folder, image_list, i, image):
+                        return self.take_mask(info, folder, image_list, i, image,transform)
+    def take_mask(self, info, folder, image_list, i, image,transform):
         before = i
         after = len(image_list) - i - 1
         info['start_frame'] = before
@@ -43,14 +43,17 @@ class Aff2CompDatasetNew(Dataset):
         if(before>=7):
                         # take last 7 frames and current frame
             for cnt,z in enumerate(range(i-8,i+1)):
-                image_path = os.path.join(self.root_dir,"extracted",folder,"mask",image)
+                image_path = os.path.join(self.root_dir,"extracted",folder,"mask",image_list[z])
                 mask_img = Image.open(image_path)
+                # print(image_path)
+                mask_img.save(f"{cnt}.jpg")
                 try:
                     clip[cnt, :, :, 3] = np.array(mask_img)
                     # print("worked fine")
                 except:
                     X = 0
                     # print("there was an issue, but we just leave a blask mask :)")
+        # print(type(clip)) 
         return  self.clip_transform(clip)
 
     def __init__(self,root_dir='',mtl_path = 'mtl_data/'):
@@ -161,6 +164,7 @@ class Aff2CompDatasetNew(Dataset):
         dict['clip']  = self.add_video(d,self.extracted_frames)
         if(dict['clip']==None):
             dict['clip'] = torch.zeros(4,8,112,112,dtype=torch.float)
+        
         dict['expressions'] = d['expressions']
         return dict
     def __len__(self):

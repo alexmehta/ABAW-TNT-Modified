@@ -1,0 +1,19 @@
+/home/alex/.local/lib/python3.8/site-packages/torchaudio/functional/functional.py:357: UserWarning: At least one mel filterbank has all zero values. The value for `n_mels` (128) may be set too high. Or, the value for `n_freqs` (513) may be set too low.
+  warnings.warn(
+cuda
+Traceback (most recent call last):
+  File "train.py", line 35, in <module>
+    model = TwoStreamAuralVisualModel(num_channels=4).to(device)
+  File "/home/alex/detection/ABAW2020TNT-Modified/tsav.py", line 77, in __init__
+    self.audio_model.resnet.fc = Dummy()
+  File "/home/alex/.local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 947, in __getattr__
+    raise AttributeError("'{}' object has no attribute '{}'".format(
+AttributeError: 'TwoStreamAuralVisualModel' object has no attribute 'audio_model'
+Traceback (most recent call last):
+  File "train.py", line 35, in <module>
+    model = TwoStreamAuralVisualModel(num_channels=4).to(device)
+  File "/home/alex/detection/ABAW2020TNT-Modified/tsav.py", line 77, in __init__
+    self.audio_model.resnet.fc = Dummy()
+  File "/home/alex/.local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 947, in __getattr__
+    raise AttributeError("'{}' object has no attribute '{}'".format(
+AttributeError: 'TwoStreamAuralVisualModel' object has no attribute 'audio_model'

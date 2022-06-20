@@ -1,0 +1,671 @@
+
+cuda
+/home/alex/.local/lib/python3.8/site-packages/torchaudio/functional/functional.py:357: UserWarning: At least one mel filterbank has all zero values. The value for `n_mels` (128) may be set too high. Or, the value for `n_freqs` (513) may be set too low.
+  warnings.warn(
+tensor(718.3146, device='cuda:0', grad_fn=<SumBackward0>)
+Epoch [1/10]:   0%|               | 1/5783 [00:01<1:52:28,  1.17s/it, loss=6.39]
+tensor(658.9907, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   0%|               | 3/5783 [00:02<1:20:58,  1.19it/s, loss=6.37]
+tensor(272.7017, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(291.6148, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   0%|               | 6/5783 [00:05<1:14:12,  1.30it/s, loss=6.33]
+tensor(743.7347, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(309.3916, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   0%|               | 9/5783 [00:07<1:13:09,  1.32it/s, loss=6.28]
+tensor(488.4324, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   0%|              | 11/5783 [00:08<1:13:29,  1.31it/s, loss=6.33]
+tensor(548.4495, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(317.0945, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   0%|              | 14/5783 [00:11<1:11:59,  1.34it/s, loss=6.17]
+tensor(321.4979, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(367.8454, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   0%|              | 17/5783 [00:13<1:13:20,  1.31it/s, loss=6.23]
+tensor(333.9404, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   0%|              | 19/5783 [00:14<1:12:37,  1.32it/s, loss=6.22]
+tensor(312.4554, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(339.1975, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   0%|              | 22/5783 [00:17<1:12:06,  1.33it/s, loss=6.33]
+tensor(331.5582, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(334.8808, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   0%|                 | 25/5783 [00:19<1:11:41,  1.34it/s, loss=6]
+tensor(333.2380, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   0%|              | 27/5783 [00:20<1:12:07,  1.33it/s, loss=6.13]
+tensor(543.0106, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(421.4103, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   1%|              | 30/5783 [00:23<1:13:26,  1.31it/s, loss=5.97]
+tensor(339.3206, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(417.2192, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   1%|               | 33/5783 [00:25<1:12:22,  1.32it/s, loss=6.4]
+tensor(343.4877, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   1%|              | 35/5783 [00:27<1:11:55,  1.33it/s, loss=6.04]
+tensor(334.9412, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(331.7036, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   1%|              | 38/5783 [00:29<1:11:37,  1.34it/s, loss=6.18]
+tensor(333.1071, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(562.3867, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   1%|              | 41/5783 [00:31<1:11:33,  1.34it/s, loss=5.85]
+tensor(340.5928, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   1%|              | 43/5783 [00:33<1:11:51,  1.33it/s, loss=5.84]
+tensor(529.3108, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(343.8700, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   1%|              | 46/5783 [00:35<1:11:20,  1.34it/s, loss=6.22]
+tensor(348.8378, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(333.4341, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   1%|              | 49/5783 [00:37<1:11:33,  1.34it/s, loss=6.04]
+tensor(334.4279, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   1%|              | 51/5783 [00:39<1:11:36,  1.33it/s, loss=5.82]
+tensor(240.8060, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(545.0193, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   1%|▏             | 54/5783 [00:41<1:15:20,  1.27it/s, loss=5.87]
+tensor(287.8914, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   1%|▏             | 57/5783 [00:43<1:12:21,  1.32it/s, loss=5.92]
+tensor(309.4153, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(561.3052, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   1%|▏             | 59/5783 [00:45<1:10:42,  1.35it/s, loss=6.24]
+tensor(263.9531, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(341.0003, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   1%|▏             | 62/5783 [00:47<1:09:26,  1.37it/s, loss=5.68]
+tensor(581.2888, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(545.3848, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   1%|▏             | 65/5783 [00:49<1:09:52,  1.36it/s, loss=6.46]
+tensor(350.1858, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   1%|▏             | 67/5783 [00:51<1:12:18,  1.32it/s, loss=6.11]
+tensor(316.3743, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(438.3329, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   1%|▏             | 70/5783 [00:53<1:12:53,  1.31it/s, loss=5.87]
+tensor(357.4309, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(336.4900, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   1%|▏             | 73/5783 [00:55<1:12:12,  1.32it/s, loss=5.77]
+tensor(351.6221, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   1%|▏             | 75/5783 [00:57<1:13:38,  1.29it/s, loss=5.97]
+tensor(350.7737, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(333.1624, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   1%|▏             | 78/5783 [00:59<1:12:41,  1.31it/s, loss=6.12]
+tensor(508.8506, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   1%|▏             | 80/5783 [01:01<1:14:14,  1.28it/s, loss=6.03]
+tensor(351.5369, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(613.5007, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   1%|▏             | 83/5783 [01:03<1:14:28,  1.28it/s, loss=5.76]
+tensor(308.7026, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   1%|▏             | 85/5783 [01:05<1:14:51,  1.27it/s, loss=5.99]
+tensor(511.6630, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(792.1740, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   2%|▏             | 88/5783 [01:07<1:13:40,  1.29it/s, loss=5.84]
+tensor(235.7120, device='cuda:0', grad_fn=<SumBackward0>)
+
+
+Epoch [1/10]:   2%|▏             | 93/5783 [01:11<1:14:45,  1.27it/s, loss=5.81]
+tensor(326.3727, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(331.3767, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   2%|▏             | 96/5783 [01:13<1:11:52,  1.32it/s, loss=5.96]
+tensor(342.1570, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(556.4005, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   2%|▏             | 99/5783 [01:15<1:10:06,  1.35it/s, loss=5.62]
+tensor(352.4800, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(311.5953, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   2%|▏            | 101/5783 [01:17<1:09:19,  1.37it/s, loss=5.81]
+tensor(335.5631, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   2%|▏            | 104/5783 [01:19<1:10:09,  1.35it/s, loss=5.95]
+tensor(458.1309, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(561.8380, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   2%|▏            | 107/5783 [01:21<1:11:31,  1.32it/s, loss=5.72]
+tensor(660.5354, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(511.9106, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   2%|▏            | 109/5783 [01:23<1:10:00,  1.35it/s, loss=6.07]
+tensor(568.8014, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(357.2413, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(569.6010, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(358.8505, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   2%|▎             | 112/5783 [01:25<1:10:20,  1.34it/s, loss=5.7]
+tensor(344.0116, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(315.7413, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   2%|▎            | 115/5783 [01:27<1:08:16,  1.38it/s, loss=5.95]
+tensor(532.1337, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(470.4911, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   2%|▎            | 118/5783 [01:29<1:08:08,  1.39it/s, loss=5.87]
+tensor(305.0125, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   2%|▎            | 120/5783 [01:31<1:08:26,  1.38it/s, loss=5.84]
+tensor(474.9643, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(353.2111, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   2%|▎            | 123/5783 [01:33<1:11:09,  1.33it/s, loss=5.87]
+tensor(356.0768, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(725.1754, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   2%|▎            | 126/5783 [01:35<1:09:20,  1.36it/s, loss=5.98]
+tensor(474.1815, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   2%|▎            | 129/5783 [01:37<1:09:46,  1.35it/s, loss=5.97]
+tensor(260.7588, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(422.8318, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   2%|▎            | 131/5783 [01:39<1:12:43,  1.30it/s, loss=5.51]
+tensor(345.8730, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   2%|▎            | 134/5783 [01:41<1:13:39,  1.28it/s, loss=5.79]
+tensor(339.8951, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(342.8981, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   2%|▎            | 136/5783 [01:43<1:14:04,  1.27it/s, loss=5.33]
+tensor(573.9592, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(345.0619, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   2%|▎            | 139/5783 [01:45<1:12:35,  1.30it/s, loss=5.89]
+tensor(542.8569, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   2%|▎            | 141/5783 [01:47<1:12:39,  1.29it/s, loss=5.53]
+tensor(359.7292, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(558.3018, device='cuda:0', grad_fn=<SumBackward0>)
+
+
+Epoch [1/10]:   3%|▎            | 146/5783 [01:51<1:13:11,  1.28it/s, loss=5.85]
+tensor(546.6903, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(475.4575, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(362.3712, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(353.2476, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   3%|▎            | 149/5783 [01:53<1:11:54,  1.31it/s, loss=5.98]
+tensor(348.8699, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(339.8490, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   3%|▎            | 152/5783 [01:55<1:10:51,  1.32it/s, loss=5.96]
+tensor(501.3389, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   3%|▎            | 155/5783 [01:57<1:08:59,  1.36it/s, loss=5.68]
+tensor(306.9183, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(348.4502, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   3%|▎            | 157/5783 [01:59<1:09:11,  1.36it/s, loss=5.73]
+tensor(494.0360, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(536.9313, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   3%|▍             | 160/5783 [02:01<1:09:52,  1.34it/s, loss=5.8]
+tensor(783.2715, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   3%|▎            | 162/5783 [02:03<1:12:14,  1.30it/s, loss=5.52]
+tensor(511.4175, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(329.3749, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   3%|▎            | 165/5783 [02:05<1:11:07,  1.32it/s, loss=5.69]
+tensor(484.2692, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(332.3406, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   3%|▍            | 168/5783 [02:07<1:12:17,  1.29it/s, loss=6.08]
+tensor(358.6237, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   3%|▍            | 170/5783 [02:09<1:13:33,  1.27it/s, loss=6.01]
+tensor(355.9012, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(421.4140, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   3%|▍            | 173/5783 [02:11<1:10:48,  1.32it/s, loss=5.81]
+tensor(349.6053, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(528.2423, device='cuda:0', grad_fn=<SumBackward0>)
+
+
+Epoch [1/10]:   3%|▍            | 178/5783 [02:15<1:09:00,  1.35it/s, loss=5.67]
+tensor(508.4417, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   3%|▍            | 181/5783 [02:17<1:09:46,  1.34it/s, loss=5.61]
+tensor(349.9933, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(341.3625, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   3%|▍            | 184/5783 [02:19<1:09:42,  1.34it/s, loss=6.01]
+tensor(329.7721, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(483.6340, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   3%|▍            | 186/5783 [02:21<1:10:20,  1.33it/s, loss=5.95]
+tensor(452.5271, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   3%|▍            | 189/5783 [02:23<1:10:00,  1.33it/s, loss=6.06]
+tensor(347.6480, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(560.3043, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   3%|▍            | 192/5783 [02:25<1:09:00,  1.35it/s, loss=5.82]
+tensor(329.2129, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(311.7657, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   3%|▍            | 195/5783 [02:27<1:08:45,  1.35it/s, loss=5.43]
+tensor(347.0291, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   3%|▍            | 197/5783 [02:29<1:08:35,  1.36it/s, loss=5.55]
+tensor(516.6600, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(520.4229, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   3%|▍            | 200/5783 [02:31<1:09:09,  1.35it/s, loss=5.69]
+tensor(354.5844, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(608.6772, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   4%|▍             | 203/5783 [02:33<1:08:54,  1.35it/s, loss=5.8]
+tensor(345.1357, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(307.4723, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   4%|▍            | 205/5783 [02:35<1:09:18,  1.34it/s, loss=5.93]
+tensor(475.1718, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   4%|▍            | 208/5783 [02:37<1:09:00,  1.35it/s, loss=6.15]
+tensor(335.1211, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(396.0051, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   4%|▍            | 211/5783 [02:39<1:09:13,  1.34it/s, loss=5.37]
+tensor(487.9327, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(356.8019, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   4%|▍            | 213/5783 [02:41<1:09:08,  1.34it/s, loss=6.04]
+tensor(352.7302, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   4%|▍            | 216/5783 [02:43<1:08:37,  1.35it/s, loss=5.99]
+tensor(478.2506, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(343.7888, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   4%|▍            | 219/5783 [02:45<1:08:28,  1.35it/s, loss=5.39]
+tensor(335.2544, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(347.0521, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(486.2638, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(288.8884, device='cuda:0', grad_fn=<SumBackward0>)
+
+
+Epoch [1/10]:   4%|▌            | 224/5783 [02:49<1:08:50,  1.35it/s, loss=5.49]
+tensor(461.3552, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(372.6530, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   4%|▌             | 227/5783 [02:51<1:09:09,  1.34it/s, loss=5.2]
+tensor(356.1362, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(450.5529, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   4%|▌            | 230/5783 [02:53<1:11:05,  1.30it/s, loss=5.48]
+tensor(359.3448, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(371.8371, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(355.8383, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(547.7840, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   4%|▌            | 232/5783 [02:55<1:11:04,  1.30it/s, loss=5.73]
+tensor(358.0268, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(617.3098, device='cuda:0', grad_fn=<SumBackward0>)
+
+
+Epoch [1/10]:   4%|▌             | 237/5783 [02:59<1:09:30,  1.33it/s, loss=5.3]
+tensor(358.8542, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   4%|▌            | 240/5783 [03:01<1:09:52,  1.32it/s, loss=5.66]
+tensor(378.4253, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(362.2333, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   4%|▌            | 243/5783 [03:03<1:09:09,  1.34it/s, loss=5.41]
+tensor(340.1287, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(407.8115, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   4%|▌            | 246/5783 [03:05<1:08:41,  1.34it/s, loss=5.91]
+tensor(499.8881, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   4%|▌            | 248/5783 [03:07<1:08:09,  1.35it/s, loss=5.84]
+tensor(352.7275, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(283.3732, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   4%|▌            | 251/5783 [03:09<1:08:05,  1.35it/s, loss=5.43]
+tensor(393.0721, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(326.7314, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   4%|▌            | 254/5783 [03:11<1:09:03,  1.33it/s, loss=5.74]
+tensor(371.1223, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(551.4164, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(453.2213, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(348.7159, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   4%|▌            | 256/5783 [03:13<1:08:19,  1.35it/s, loss=5.78]
+tensor(342.7454, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(586.6936, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   4%|▌            | 259/5783 [03:15<1:08:10,  1.35it/s, loss=5.77]
+tensor(667.9915, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(366.9266, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   5%|▌            | 262/5783 [03:17<1:08:19,  1.35it/s, loss=5.66]
+tensor(355.5333, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   5%|▌            | 264/5783 [03:19<1:08:20,  1.35it/s, loss=5.37]
+tensor(550.8556, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(356.4438, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   5%|▌            | 267/5783 [03:21<1:07:48,  1.36it/s, loss=5.59]
+tensor(351.8386, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(361.3425, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   5%|▌            | 270/5783 [03:23<1:07:30,  1.36it/s, loss=5.41]
+tensor(333.7713, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   5%|▌            | 273/5783 [03:25<1:08:05,  1.35it/s, loss=5.93]
+tensor(499.8451, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(346.1571, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   5%|▌            | 275/5783 [03:27<1:07:27,  1.36it/s, loss=5.97]
+tensor(372.7762, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(320.2638, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   5%|▌            | 278/5783 [03:29<1:07:40,  1.36it/s, loss=5.83]
+tensor(349.8859, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   5%|▋            | 281/5783 [03:31<1:08:16,  1.34it/s, loss=5.42]
+tensor(355.1518, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(363.0824, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   5%|▋            | 283/5783 [03:33<1:08:21,  1.34it/s, loss=5.51]
+tensor(381.8478, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(590.5227, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   5%|▋            | 286/5783 [03:35<1:07:42,  1.35it/s, loss=5.73]
+tensor(302.0320, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(373.0062, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   5%|▋             | 289/5783 [03:37<1:07:54,  1.35it/s, loss=5.9]
+tensor(360.1281, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   5%|▋            | 292/5783 [03:39<1:08:14,  1.34it/s, loss=5.45]
+tensor(434.0031, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(464.6495, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   5%|▋            | 294/5783 [03:41<1:08:13,  1.34it/s, loss=5.52]
+tensor(435.9780, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(382.7856, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   5%|▋            | 297/5783 [03:43<1:07:41,  1.35it/s, loss=5.44]
+tensor(339.8106, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   5%|▋            | 300/5783 [03:45<1:07:18,  1.36it/s, loss=5.24]
+tensor(467.0829, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(591.8809, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   5%|▋            | 302/5783 [03:47<1:07:57,  1.34it/s, loss=5.86]
+tensor(387.1827, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(605.2325, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   5%|▋            | 305/5783 [03:49<1:08:05,  1.34it/s, loss=5.34]
+tensor(391.8875, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   5%|▋            | 308/5783 [03:51<1:07:33,  1.35it/s, loss=5.64]
+tensor(782.9671, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(383.4083, device='cuda:0', grad_fn=<SumBackward0>)
+
+
+Epoch [1/10]:   5%|▋            | 313/5783 [03:55<1:07:25,  1.35it/s, loss=5.73]
+tensor(366.3554, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(391.4838, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   5%|▋            | 316/5783 [03:57<1:08:05,  1.34it/s, loss=5.66]
+tensor(347.5336, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(617.4804, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   6%|▋            | 319/5783 [03:59<1:08:16,  1.33it/s, loss=5.65]
+tensor(409.1028, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   6%|▋            | 321/5783 [04:01<1:08:20,  1.33it/s, loss=5.28]
+tensor(340.0180, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(389.7355, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   6%|▋            | 324/5783 [04:03<1:07:57,  1.34it/s, loss=5.14]
+tensor(517.7700, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(501.2999, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(363.0646, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(302.6753, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   6%|▋            | 327/5783 [04:05<1:07:46,  1.34it/s, loss=5.82]
+tensor(383.3419, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(291.0852, device='cuda:0', grad_fn=<SumBackward0>)
+
+
+Epoch [1/10]:   6%|▋            | 332/5783 [04:09<1:08:13,  1.33it/s, loss=5.69]
+tensor(336.4608, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(533.2890, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   6%|▊            | 334/5783 [04:11<1:11:08,  1.28it/s, loss=6.12]
+tensor(420.1081, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   6%|▊            | 337/5783 [04:13<1:11:57,  1.26it/s, loss=5.76]
+tensor(389.0802, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(355.6862, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   6%|▊            | 339/5783 [04:15<1:10:41,  1.28it/s, loss=5.16]
+tensor(380.7852, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   6%|▊            | 342/5783 [04:17<1:09:01,  1.31it/s, loss=5.82]
+tensor(425.3070, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(381.0642, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   6%|▊            | 345/5783 [04:19<1:08:35,  1.32it/s, loss=5.49]
+tensor(379.9302, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(342.0070, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(347.5031, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(348.4443, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   6%|▊             | 347/5783 [04:21<1:08:57,  1.31it/s, loss=6.1]
+tensor(516.9148, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(338.6592, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   6%|▊            | 350/5783 [04:23<1:10:42,  1.28it/s, loss=5.73]
+tensor(526.2888, device='cuda:0', grad_fn=<SumBackward0>)
+
+
+Epoch [1/10]:   6%|▊            | 355/5783 [04:27<1:10:03,  1.29it/s, loss=6.08]
+tensor(362.5600, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(342.2271, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   6%|▊            | 358/5783 [04:29<1:10:24,  1.28it/s, loss=5.17]
+tensor(555.3397, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   6%|▊            | 360/5783 [04:31<1:10:11,  1.29it/s, loss=5.74]
+tensor(359.4174, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(373.1287, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   6%|▊            | 363/5783 [04:33<1:11:00,  1.27it/s, loss=5.34]
+tensor(439.2682, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(340.8199, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(452.3922, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(377.2041, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   6%|▊            | 365/5783 [04:35<1:09:45,  1.29it/s, loss=5.79]
+tensor(358.6530, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(443.0394, device='cuda:0', grad_fn=<SumBackward0>)
+
+
+Epoch [1/10]:   6%|▊            | 371/5783 [04:39<1:09:02,  1.31it/s, loss=5.57]
+tensor(335.0796, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   6%|▊            | 373/5783 [04:41<1:07:39,  1.33it/s, loss=5.43]
+tensor(410.7581, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(340.6544, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   7%|▊            | 376/5783 [04:43<1:05:52,  1.37it/s, loss=5.83]
+tensor(346.5583, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(344.2068, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   7%|▊            | 379/5783 [04:46<1:06:48,  1.35it/s, loss=5.55]
+tensor(449.7351, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(379.1681, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   7%|▊            | 382/5783 [04:47<1:07:46,  1.33it/s, loss=5.34]
+tensor(350.6822, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   7%|▊            | 384/5783 [04:49<1:07:22,  1.34it/s, loss=5.24]
+tensor(528.7079, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(377.3794, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   7%|▊            | 387/5783 [04:51<1:05:50,  1.37it/s, loss=5.24]
+tensor(348.2951, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(602.2010, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   7%|▉            | 390/5783 [04:53<1:06:19,  1.36it/s, loss=5.61]
+tensor(738.6095, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   7%|▉            | 393/5783 [04:56<1:04:48,  1.39it/s, loss=5.31]
+tensor(376.0375, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(345.7015, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(337.7642, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(338.6702, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(324.9828, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   7%|▉            | 395/5783 [04:57<1:05:29,  1.37it/s, loss=6.24]
+tensor(373.1942, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(321.3959, device='cuda:0', grad_fn=<SumBackward0>)
+
+
+Epoch [1/10]:   7%|▉            | 401/5783 [05:01<1:05:06,  1.38it/s, loss=5.96]
+tensor(524.9746, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   7%|▉            | 403/5783 [05:03<1:05:58,  1.36it/s, loss=5.44]
+tensor(314.0079, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(455.6271, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   7%|▉            | 406/5783 [05:05<1:07:36,  1.33it/s, loss=5.53]
+tensor(352.5986, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(348.8624, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   7%|▉            | 409/5783 [05:08<1:09:01,  1.30it/s, loss=5.46]
+tensor(372.4612, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(355.1906, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(335.5517, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(299.0490, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   7%|▉            | 411/5783 [05:09<1:08:03,  1.32it/s, loss=5.03]
+tensor(327.9810, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(289.1400, device='cuda:0', grad_fn=<SumBackward0>)
+
+
+Epoch [1/10]:   7%|▉            | 417/5783 [05:14<1:07:08,  1.33it/s, loss=5.26]
+tensor(568.2327, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   7%|▉            | 419/5783 [05:15<1:05:59,  1.35it/s, loss=5.33]
+tensor(344.2996, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(332.1545, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   7%|▉            | 422/5783 [05:18<1:07:08,  1.33it/s, loss=5.26]
+tensor(355.7532, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(613.2289, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   7%|▉            | 425/5783 [05:20<1:07:00,  1.33it/s, loss=5.36]
+tensor(635.7239, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   7%|▉            | 427/5783 [05:21<1:06:14,  1.35it/s, loss=5.21]
+tensor(369.1230, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(370.4571, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   7%|▉            | 430/5783 [05:24<1:06:22,  1.34it/s, loss=5.21]
+tensor(484.1483, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(344.0243, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   7%|▉            | 433/5783 [05:25<1:07:09,  1.33it/s, loss=6.22]
+tensor(357.2034, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   8%|▉            | 435/5783 [05:27<1:06:44,  1.34it/s, loss=5.54]
+tensor(327.0452, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(327.9849, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   8%|█             | 438/5783 [05:30<1:07:28,  1.32it/s, loss=5.4]
+tensor(398.6931, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(337.0014, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   8%|▉            | 441/5783 [05:32<1:10:22,  1.27it/s, loss=5.21]
+tensor(372.4299, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   8%|▉            | 443/5783 [05:33<1:07:46,  1.31it/s, loss=5.12]
+tensor(410.0083, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(321.3580, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   8%|█             | 446/5783 [05:36<1:06:16,  1.34it/s, loss=5.8]
+tensor(315.5972, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(436.4999, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   8%|█            | 449/5783 [05:38<1:05:42,  1.35it/s, loss=5.49]
+tensor(507.7405, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   8%|█            | 451/5783 [05:39<1:05:33,  1.36it/s, loss=6.06]
+tensor(335.6754, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(408.0699, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   8%|█            | 454/5783 [05:42<1:07:57,  1.31it/s, loss=5.76]
+tensor(340.5840, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(419.7745, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   8%|█            | 457/5783 [05:44<1:08:30,  1.30it/s, loss=5.51]
+tensor(336.9232, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   8%|█            | 459/5783 [05:46<1:09:32,  1.28it/s, loss=5.04]
+tensor(332.6332, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(369.7914, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   8%|█            | 462/5783 [05:47<1:06:40,  1.33it/s, loss=5.16]
+tensor(352.5511, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   8%|█            | 465/5783 [05:50<1:06:23,  1.34it/s, loss=5.32]
+tensor(314.4660, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(443.4604, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   8%|█            | 467/5783 [05:51<1:05:28,  1.35it/s, loss=5.63]
+tensor(451.0855, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(331.1359, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   8%|█            | 470/5783 [05:54<1:05:27,  1.35it/s, loss=5.15]
+tensor(369.7716, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(311.5450, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   8%|█▏            | 473/5783 [05:56<1:05:14,  1.36it/s, loss=5.3]
+tensor(406.5911, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   8%|█            | 475/5783 [05:57<1:05:31,  1.35it/s, loss=5.14]
+tensor(545.4294, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(350.8053, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   8%|█            | 478/5783 [06:00<1:06:59,  1.32it/s, loss=5.71]
+tensor(327.1882, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(379.7886, device='cuda:0', grad_fn=<SumBackward0>)
+Traceback (most recent call last):
+  File "train.py", line 65, in <module>
+    expected = torch.LongTensor(data['expressions']).to(device)
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "train.py", line 65, in <module>
+    expected = torch.LongTensor(data['expressions']).to(device)
+KeyboardInterrupt
+tensor(381.1692, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(345.6293, device='cuda:0', grad_fn=<SumBackward0>)

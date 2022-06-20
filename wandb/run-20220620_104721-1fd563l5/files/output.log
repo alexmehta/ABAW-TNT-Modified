@@ -1,0 +1,57 @@
+
+cuda
+/home/alex/.local/lib/python3.8/site-packages/torchaudio/functional/functional.py:357: UserWarning: At least one mel filterbank has all zero values. The value for `n_mels` (128) may be set too high. Or, the value for `n_freqs` (513) may be set too low.
+  warnings.warn(
+  0%|                                                  | 0/5783 [00:00<?, ?it/s]
+tensor(291.0096, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   0%|               | 2/5783 [00:02<1:37:51,  1.02s/it, loss=6.24]
+tensor(300.1974, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(634.4236, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   0%|               | 5/5783 [00:04<1:21:21,  1.18it/s, loss=6.18]
+tensor(296.2858, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   0%|               | 7/5783 [00:06<1:15:25,  1.28it/s, loss=6.19]
+tensor(329.5010, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(318.5327, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   0%|               | 10/5783 [00:08<1:11:38,  1.34it/s, loss=6.2]
+tensor(483.4164, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(510.1664, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   0%|              | 13/5783 [00:10<1:14:04,  1.30it/s, loss=6.09]
+tensor(294.5204, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(260.6049, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   0%|              | 16/5783 [00:12<1:09:42,  1.38it/s, loss=6.07]
+tensor(166.9437, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   0%|              | 18/5783 [00:14<1:09:41,  1.38it/s, loss=6.34]
+tensor(748.4645, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(288.0939, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   0%|               | 21/5783 [00:16<1:08:33,  1.40it/s, loss=5.8]
+tensor(317.9636, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(204.4683, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   0%|              | 24/5783 [00:18<1:08:46,  1.40it/s, loss=6.02]
+tensor(298.2059, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(292.4628, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   0%|              | 27/5783 [00:20<1:09:18,  1.38it/s, loss=6.03]
+tensor(315.0165, device='cuda:0', grad_fn=<SumBackward0>)
+tensor(835.1677, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   1%|                 | 30/5783 [00:22<1:09:44,  1.37it/s, loss=6]
+tensor(306.7738, device='cuda:0', grad_fn=<SumBackward0>)
+
+Epoch [1/10]:   1%|              | 32/5783 [00:24<1:08:54,  1.39it/s, loss=6.03]
+tensor(316.5428, device='cuda:0', grad_fn=<SumBackward0>)
+Traceback (most recent call last):
+  File "train.py", line 65, in <module>
+    expected = torch.LongTensor(data['expressions']).to(device)
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "train.py", line 65, in <module>
+    expected = torch.LongTensor(data['expressions']).to(device)

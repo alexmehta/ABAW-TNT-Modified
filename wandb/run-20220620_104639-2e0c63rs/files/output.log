@@ -1,0 +1,64 @@
+
+cuda
+/home/alex/.local/lib/python3.8/site-packages/torchaudio/functional/functional.py:357: UserWarning: At least one mel filterbank has all zero values. The value for `n_mels` (128) may be set too high. Or, the value for `n_freqs` (513) may be set too low.
+  warnings.warn(
+torch.Size([16, 8])
+torch.Size([16, 8])
+Epoch [1/10]:   0%|               | 1/5783 [00:01<1:52:44,  1.17s/it, loss=6.48]
+torch.Size([16, 8])
+
+Epoch [1/10]:   0%|               | 3/5783 [00:02<1:20:35,  1.20it/s, loss=6.27]
+torch.Size([16, 8])
+torch.Size([16, 8])
+
+Epoch [1/10]:   0%|               | 6/5783 [00:05<1:13:08,  1.32it/s, loss=6.38]
+torch.Size([16, 8])
+torch.Size([16, 8])
+
+Epoch [1/10]:   0%|               | 9/5783 [00:07<1:13:16,  1.31it/s, loss=6.19]
+torch.Size([16, 8])
+
+Epoch [1/10]:   0%|              | 11/5783 [00:08<1:12:38,  1.32it/s, loss=6.23]
+torch.Size([16, 8])
+torch.Size([16, 8])
+
+Epoch [1/10]:   0%|              | 14/5783 [00:11<1:12:41,  1.32it/s, loss=6.29]
+torch.Size([16, 8])
+torch.Size([16, 8])
+
+Epoch [1/10]:   0%|              | 17/5783 [00:13<1:11:58,  1.34it/s, loss=6.03]
+torch.Size([16, 8])
+
+Epoch [1/10]:   0%|              | 19/5783 [00:14<1:11:17,  1.35it/s, loss=6.28]
+torch.Size([16, 8])
+torch.Size([16, 8])
+
+
+Epoch [1/10]:   0%|              | 25/5783 [00:19<1:13:41,  1.30it/s, loss=6.12]
+torch.Size([16, 8])
+
+Epoch [1/10]:   0%|              | 27/5783 [00:21<1:13:20,  1.31it/s, loss=6.41]
+torch.Size([16, 8])
+torch.Size([16, 8])
+
+Epoch [1/10]:   1%|              | 30/5783 [00:23<1:15:21,  1.27it/s, loss=6.07]
+torch.Size([16, 8])
+torch.Size([16, 8])
+
+Epoch [1/10]:   1%|              | 32/5783 [00:25<1:14:46,  1.28it/s, loss=6.19]
+torch.Size([16, 8])
+
+Epoch [1/10]:   1%|               | 35/5783 [00:27<1:14:22,  1.29it/s, loss=5.9]
+torch.Size([16, 8])
+torch.Size([16, 8])
+
+Epoch [1/10]:   1%|                 | 37/5783 [00:28<1:16:34,  1.25it/s, loss=6]
+torch.Size([16, 8])
+
+Epoch [1/10]:   1%|               | 40/5783 [00:31<1:15:02,  1.28it/s, loss=5.8]
+torch.Size([16, 8])
+torch.Size([16, 8])
+
+Epoch [1/10]:   1%|              | 43/5783 [00:33<1:13:30,  1.30it/s, loss=5.76]
+torch.Size([16, 8])
+torch.Size([16, 8])
