@@ -12,8 +12,11 @@ import wandb
 import os
 import torch.optim 
 import torch.nn as nn
+import nonechucks as nc
 from aff2newdataset import Aff2CompDatasetNew
 import audtorch
+from torch.profiler import profile, record_function, ProfilerActivity
+wandb.init(project="expressions")
 if torch.cuda.is_available():
     device = torch.device("cuda")
     print("cuda")
@@ -23,14 +26,15 @@ else:
 
 # device = torch.device("cpu")
 #TODO fix that you can't you a batch size more than 1
-batch_size = 1 
+batch_size = 32
 save_model_path = '/home/alex/Desktop/TSAV_Sub4_544k.pth.tar' # path to the model
 database_path = 'aff2_processed/'  # path where the database was created (images, audio...) see create_database.py
-epochs = 5 
+epochs = 10 
 clip_value = 5
 
 train_set = Aff2CompDatasetNew(root_dir='aff2_processed')
-train_loader = DataLoader(dataset=train_set,batch_size=batch_size,shuffle=True)
+
+train_loader =DataLoader(dataset=train_set,batch_size=batch_size,shuffle=True)
 
 model = TwoStreamAuralVisualModel(num_channels=4).to(device)
 modes = model.modes
@@ -46,32 +50,42 @@ optimizer = torch.optim.Adam(model.parameters(),lr=0.001)
 # as training objective.
 # au_detection_metric = nn.BCELoss()
 # va_metrics = audtorch.metrics.functional.concordance_cc
-
 expression_classification_fn = nn.CrossEntropyLoss()
+print(model)
+wandb.watch(model)
 for epoch in range(epochs):
+    total = 0
+    correct = 0
+    model.train()
+    train_loss = 0.0
     loop =tqdm(train_loader,total=len(train_set),leave=False)
-    for data in loop:
-    
+    for i,data in enumerate(loop):
         if(int(data['expressions'][0])==-1):
             continue
-        x = {}
         if('clip' not in data):
             continue
+        x = {}
+        
         x['clip'] = data['clip'].to(device)
         
         optimizer.zero_grad()
         result = model(x)
-        data['expressions'][0]= int(data['expressions'][0])
         expected = torch.LongTensor(data['expressions']).to(device)
-        expected = expected.view(1)
+        
+        # expected = expected.view(batch_size,1)
         # print(expected)
         # print(result)
         loss = expression_classification_fn(result,expected)
+        
         loss.backward()
-        loop.set_description(f"Epoch [{epoch}/{epochs}]")
+        train_loss+=loss.item()
+        
+        loop.set_description(f"Epoch [{epoch+1}/{epochs}]")
         loop.set_postfix(loss=loss.item())
-        # nn.utils.clip_grad_norm_(model.parameters(),clip_value)
         optimizer.step()
-        # break
+        wandb.log({
+           "epoch": epoch+1,
+             "train_loss": loss.item()
+        })
 torch.save(model.state_dict(), 'model.pth')
 

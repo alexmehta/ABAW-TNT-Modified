@@ -1,0 +1,24 @@
+
+cuda
+/home/alex/.local/lib/python3.8/site-packages/torchaudio/functional/functional.py:357: UserWarning: At least one mel filterbank has all zero values. The value for `n_mels` (128) may be set too high. Or, the value for `n_freqs` (513) may be set too low.
+  warnings.warn(
+Traceback (most recent call last):
+  File "/home/alex/detection/ABAW2020TNT-Modified/train.py", line 36, in <module>
+    train_loader = nc.SafeDataLoader(dataset=train_set,batch_size=batch_size,shuffle=True)
+  File "/home/alex/.local/lib/python3.8/site-packages/nonechucks/dataloader.py", line 25, in __call__
+    obj = type.__call__(cls, *args, **kwargs)
+  File "/home/alex/.local/lib/python3.8/site-packages/nonechucks/dataloader.py", line 138, in __init__
+    super(SafeDataLoader, self).__init__(dataset, **kwargs)
+  File "/home/alex/.local/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 266, in __init__
+    sampler = RandomSampler(dataset, generator=generator)  # type: ignore
+TypeError: safe_sampler_callable() got an unexpected keyword argument 'generator'
+Traceback (most recent call last):
+  File "/home/alex/detection/ABAW2020TNT-Modified/train.py", line 36, in <module>
+    train_loader = nc.SafeDataLoader(dataset=train_set,batch_size=batch_size,shuffle=True)
+  File "/home/alex/.local/lib/python3.8/site-packages/nonechucks/dataloader.py", line 25, in __call__
+    obj = type.__call__(cls, *args, **kwargs)
+  File "/home/alex/.local/lib/python3.8/site-packages/nonechucks/dataloader.py", line 138, in __init__
+    super(SafeDataLoader, self).__init__(dataset, **kwargs)
+  File "/home/alex/.local/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 266, in __init__
+    sampler = RandomSampler(dataset, generator=generator)  # type: ignore
+TypeError: safe_sampler_callable() got an unexpected keyword argument 'generator'

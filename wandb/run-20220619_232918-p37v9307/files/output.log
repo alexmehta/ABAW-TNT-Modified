@@ -1,0 +1,30 @@
+
+cuda
+/home/alex/.local/lib/python3.8/site-packages/torchaudio/functional/functional.py:357: UserWarning: At least one mel filterbank has all zero values. The value for `n_mels` (128) may be set too high. Or, the value for `n_freqs` (513) may be set too low.
+  warnings.warn(
+Traceback (most recent call last):
+  File "/home/alex/detection/ABAW2020TNT-Modified/train.py", line 39, in <module>
+    d = train_set.__getitem__(i)
+  File "/home/alex/detection/ABAW2020TNT-Modified/aff2newdataset.py", line 163, in __getitem__
+    d = self.dataset[index]
+IndexError: list index out of range
+During handling of the above exception, another exception occurred:
+Traceback (most recent call last):
+  File "/home/alex/detection/ABAW2020TNT-Modified/train.py", line 42, in <module>
+    train_set.__remove__(i)
+  File "/home/alex/detection/ABAW2020TNT-Modified/aff2newdataset.py", line 198, in __remove__
+    del self.dataset[index]
+IndexError: list assignment index out of range
+Traceback (most recent call last):
+  File "/home/alex/detection/ABAW2020TNT-Modified/train.py", line 39, in <module>
+    d = train_set.__getitem__(i)
+  File "/home/alex/detection/ABAW2020TNT-Modified/aff2newdataset.py", line 163, in __getitem__
+    d = self.dataset[index]
+IndexError: list index out of range
+During handling of the above exception, another exception occurred:
+Traceback (most recent call last):
+  File "/home/alex/detection/ABAW2020TNT-Modified/train.py", line 42, in <module>
+    train_set.__remove__(i)
+  File "/home/alex/detection/ABAW2020TNT-Modified/aff2newdataset.py", line 198, in __remove__
+    del self.dataset[index]
+IndexError: list assignment index out of range

@@ -1,0 +1,54 @@
+2022-06-19 23:12:58,749 INFO    MainThread:104375 [internal.py:wandb_internal():90] W&B internal server running at pid: 104375, started at: 2022-06-19 23:12:58.749742
+2022-06-19 23:12:58,751 INFO    WriterThread:104375 [datastore.py:open_for_write():75] open: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220619_231258-ouvcu4co/run-ouvcu4co.wandb
+2022-06-19 23:12:58,752 DEBUG   SenderThread:104375 [sender.py:send():235] send: header
+2022-06-19 23:12:58,753 DEBUG   SenderThread:104375 [sender.py:send():235] send: run
+2022-06-19 23:12:58,926 DEBUG   HandlerThread:104375 [handler.py:handle_request():141] handle_request: check_version
+2022-06-19 23:12:58,964 INFO    SenderThread:104375 [dir_watcher.py:__init__():205] watching files in: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220619_231258-ouvcu4co/files
+2022-06-19 23:12:58,964 INFO    SenderThread:104375 [sender.py:_start_run_threads():812] run started: ouvcu4co with start time 1655705578
+2022-06-19 23:12:58,964 DEBUG   SenderThread:104375 [sender.py:send():235] send: summary
+2022-06-19 23:12:58,964 INFO    SenderThread:104375 [sender.py:_save_file():949] saving file wandb-summary.json with policy end
+2022-06-19 23:12:58,965 DEBUG   SenderThread:104375 [sender.py:send_request():249] send_request: check_version
+2022-06-19 23:12:59,058 DEBUG   HandlerThread:104375 [handler.py:handle_request():141] handle_request: run_start
+2022-06-19 23:12:59,063 DEBUG   HandlerThread:104375 [meta.py:__init__():35] meta init
+2022-06-19 23:12:59,063 DEBUG   HandlerThread:104375 [meta.py:__init__():49] meta init done
+2022-06-19 23:12:59,063 DEBUG   HandlerThread:104375 [meta.py:probe():209] probe
+2022-06-19 23:12:59,069 DEBUG   HandlerThread:104375 [meta.py:_setup_git():199] setup git
+2022-06-19 23:12:59,081 DEBUG   HandlerThread:104375 [meta.py:_setup_git():206] setup git done
+2022-06-19 23:12:59,082 DEBUG   HandlerThread:104375 [meta.py:_save_pip():53] save pip
+2022-06-19 23:12:59,082 DEBUG   HandlerThread:104375 [meta.py:_save_pip():67] save pip done
+2022-06-19 23:12:59,083 DEBUG   HandlerThread:104375 [meta.py:probe():247] probe done
+2022-06-19 23:12:59,146 DEBUG   SenderThread:104375 [sender.py:send():235] send: files
+2022-06-19 23:12:59,146 INFO    SenderThread:104375 [sender.py:_save_file():949] saving file wandb-metadata.json with policy now
+2022-06-19 23:12:59,153 DEBUG   HandlerThread:104375 [handler.py:handle_request():141] handle_request: stop_status
+2022-06-19 23:12:59,154 DEBUG   SenderThread:104375 [sender.py:send_request():249] send_request: stop_status
+2022-06-19 23:12:59,283 DEBUG   SenderThread:104375 [sender.py:send():235] send: telemetry
+2022-06-19 23:12:59,659 INFO    Thread-11 :104375 [upload_job.py:push():132] Uploaded file /tmp/tmp5hvcn3lqwandb/31gy24lg-wandb-metadata.json
+2022-06-19 23:12:59,966 INFO    Thread-7  :104375 [dir_watcher.py:_on_file_created():256] file/dir created: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220619_231258-ouvcu4co/files/output.log
+2022-06-19 23:12:59,967 INFO    Thread-7  :104375 [dir_watcher.py:_on_file_created():256] file/dir created: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220619_231258-ouvcu4co/files/requirements.txt
+2022-06-19 23:12:59,967 INFO    Thread-7  :104375 [dir_watcher.py:_on_file_created():256] file/dir created: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220619_231258-ouvcu4co/files/wandb-summary.json
+2022-06-19 23:12:59,967 INFO    Thread-7  :104375 [dir_watcher.py:_on_file_created():256] file/dir created: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220619_231258-ouvcu4co/files/wandb-metadata.json
+2022-06-19 23:13:01,965 INFO    Thread-7  :104375 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220619_231258-ouvcu4co/files/output.log
+2022-06-19 23:13:14,315 DEBUG   HandlerThread:104375 [handler.py:handle_request():141] handle_request: stop_status
+2022-06-19 23:13:14,316 DEBUG   SenderThread:104375 [sender.py:send_request():249] send_request: stop_status
+2022-06-19 23:13:14,445 WARNING MainThread:104375 [internal.py:wandb_internal():153] Internal process interrupt: 1
+2022-06-19 23:13:14,448 DEBUG   SenderThread:104375 [sender.py:send():235] send: telemetry
+2022-06-19 23:13:15,313 WARNING MainThread:104375 [internal.py:wandb_internal():153] Internal process interrupt: 2
+2022-06-19 23:13:15,314 ERROR   MainThread:104375 [internal.py:wandb_internal():156] Internal process interrupted.
+2022-06-19 23:13:15,969 INFO    Thread-7  :104375 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220619_231258-ouvcu4co/files/output.log
+2022-06-19 23:13:16,174 INFO    SenderThread:104375 [sender.py:finish():1111] shutting down sender
+2022-06-19 23:13:16,174 INFO    WriterThread:104375 [datastore.py:close():279] close: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220619_231258-ouvcu4co/run-ouvcu4co.wandb
+2022-06-19 23:13:16,175 INFO    HandlerThread:104375 [handler.py:finish():806] shutting down handler
+2022-06-19 23:13:16,175 INFO    SenderThread:104375 [dir_watcher.py:finish():336] shutting down directory watcher
+2022-06-19 23:13:16,970 INFO    SenderThread:104375 [dir_watcher.py:finish():366] scan: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220619_231258-ouvcu4co/files
+2022-06-19 23:13:16,970 INFO    SenderThread:104375 [dir_watcher.py:finish():380] scan save: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220619_231258-ouvcu4co/files/wandb-summary.json wandb-summary.json
+2022-06-19 23:13:16,970 INFO    SenderThread:104375 [dir_watcher.py:finish():380] scan save: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220619_231258-ouvcu4co/files/output.log output.log
+2022-06-19 23:13:16,970 INFO    SenderThread:104375 [dir_watcher.py:finish():380] scan save: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220619_231258-ouvcu4co/files/requirements.txt requirements.txt
+2022-06-19 23:13:16,970 INFO    SenderThread:104375 [dir_watcher.py:finish():380] scan save: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220619_231258-ouvcu4co/files/config.yaml config.yaml
+2022-06-19 23:13:16,971 INFO    SenderThread:104375 [dir_watcher.py:finish():380] scan save: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220619_231258-ouvcu4co/files/wandb-metadata.json wandb-metadata.json
+2022-06-19 23:13:16,973 INFO    SenderThread:104375 [file_pusher.py:finish():145] shutting down file pusher
+2022-06-19 23:13:16,973 INFO    SenderThread:104375 [file_pusher.py:join():150] waiting for file pusher
+2022-06-19 23:13:17,407 INFO    Thread-14 :104375 [upload_job.py:push():132] Uploaded file /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220619_231258-ouvcu4co/files/requirements.txt
+2022-06-19 23:13:17,421 INFO    Thread-12 :104375 [upload_job.py:push():132] Uploaded file /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220619_231258-ouvcu4co/files/wandb-summary.json
+2022-06-19 23:13:17,430 INFO    Thread-15 :104375 [upload_job.py:push():132] Uploaded file /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220619_231258-ouvcu4co/files/config.yaml
+2022-06-19 23:13:17,476 INFO    Thread-13 :104375 [upload_job.py:push():132] Uploaded file /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220619_231258-ouvcu4co/files/output.log
+2022-06-19 23:13:18,056 INFO    MainThread:104375 [internal.py:handle_exit():80] Internal process exited

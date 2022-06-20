@@ -108,7 +108,8 @@ class Aff2CompDatasetNew(Dataset):
         test_csv = os.path.join(mtl_path, "test_set.txt" )
         self.dataset = []
         self.dataset += self.create_inputs(train_csv)
-        # self.testing = []
+        self.dataset = [x for x in self.dataset if x['expressions']!=-1]
+                        # self.testing = []
         # self.testing += self.create_inputs(test_csv)
 # create logger with 'spam_application'
         self.logger = logging.getLogger('spam_application')
@@ -137,11 +138,12 @@ class Aff2CompDatasetNew(Dataset):
             expected_output['vid_name'] = vid_name
             expected_output['valience'] = valience
             expected_output['arousal'] = arousal
-            expected_output['expressions'] = expressions
+            expected_output['expressions'] = int(expressions)
             expected_output['action_units'] = action_units
             # expected_output['fps'] = self.get_fps(self.find_video(expected_output['vid_name']))
             outputs.append(expected_output)
         self.time_stamps = []
+        
         return outputs
     def find_video(self,video_info):
         for video_name in self.videos:
@@ -155,13 +157,12 @@ class Aff2CompDatasetNew(Dataset):
     
     def __getitem__(self, index):
         d = self.dataset[index]
-        d = copy.deepcopy(d) 
-        
-        d['clip']  = self.add_video(d,self.extracted_frames)
-        if(d['clip']==None):
-            del d['clip'] 
-            self.logger.error('missing clip: ' + str(d))
-        return d 
+        dict = {}
+        dict['clip']  = self.add_video(d,self.extracted_frames)
+        if(dict['clip']==None):
+            dict['clip'] = torch.zeros(4,8,112,112,dtype=torch.float)
+        dict['expressions'] = d['expressions']
+        return dict
     def __len__(self):
         return len(self.dataset)
     def __add__(self,dict):
@@ -188,4 +189,8 @@ class Aff2CompDatasetNew(Dataset):
         for mp3 in self.audio_dir:
             if(file_info[0] in mp3):
                 return os.path.join(self.root_dir ,mp3)
-        
+    def __remove__(self,index):
+        try:
+            del self.dataset[index]
+        except:
+            pass

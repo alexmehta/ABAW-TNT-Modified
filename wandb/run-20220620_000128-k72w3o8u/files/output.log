@@ -1,0 +1,29 @@
+/home/alex/.local/lib/python3.8/site-packages/torchaudio/functional/functional.py:357: UserWarning: At least one mel filterbank has all zero values. The value for `n_mels` (128) may be set too high. Or, the value for `n_freqs` (513) may be set too low.
+  warnings.warn(
+cuda
+  0%|                                      | 0/145273 [00:00<?, ?it/s]
+torch.Size([32, 1])
+Traceback (most recent call last):
+  File "/home/alex/detection/ABAW2020TNT-Modified/train.py", line 78, in <module>
+    loss = expression_classification_fn(result,expected)
+  File "/home/alex/.local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/alex/.local/lib/python3.8/site-packages/torch/nn/modules/loss.py", line 1047, in forward
+    return F.cross_entropy(input, target, weight=self.weight,
+  File "/home/alex/.local/lib/python3.8/site-packages/torch/nn/functional.py", line 2690, in cross_entropy
+    return nll_loss(log_softmax(input, 1), target, weight, None, ignore_index, None, reduction)
+  File "/home/alex/.local/lib/python3.8/site-packages/torch/nn/functional.py", line 2385, in nll_loss
+    ret = torch._C._nn.nll_loss(input, target, weight, _Reduction.get_enum(reduction), ignore_index)
+RuntimeError: 1D target tensor expected, multi-target not supported
+Traceback (most recent call last):
+  File "/home/alex/detection/ABAW2020TNT-Modified/train.py", line 78, in <module>
+    loss = expression_classification_fn(result,expected)
+  File "/home/alex/.local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/alex/.local/lib/python3.8/site-packages/torch/nn/modules/loss.py", line 1047, in forward
+    return F.cross_entropy(input, target, weight=self.weight,
+  File "/home/alex/.local/lib/python3.8/site-packages/torch/nn/functional.py", line 2690, in cross_entropy
+    return nll_loss(log_softmax(input, 1), target, weight, None, ignore_index, None, reduction)
+  File "/home/alex/.local/lib/python3.8/site-packages/torch/nn/functional.py", line 2385, in nll_loss
+    ret = torch._C._nn.nll_loss(input, target, weight, _Reduction.get_enum(reduction), ignore_index)
+RuntimeError: 1D target tensor expected, multi-target not supported
