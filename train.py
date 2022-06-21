@@ -12,7 +12,7 @@ import wandb
 import torch.optim 
 import torch.nn as nn
 from aff2newdataset import Aff2CompDatasetNew
-wandb.init(project="expressions")
+wandb.init(project="expressions_estimation")
 if torch.cuda.is_available():
     device = torch.device("cuda")
     print("cuda")
@@ -22,7 +22,7 @@ else:
 
 # device = torch.device("cpu")
 
-batch_size = 16 
+batch_size = 22 
 save_model_path = '/home/alex/Desktop/TSAV_Sub4_544k.pth.tar' # path to the model
 database_path = 'aff2_processed/'  # path where the database was created (images, audio...) see create_database.py
 epochs = 10 
@@ -64,6 +64,7 @@ for epoch in range(epochs):
         result = model(x)
         expected = torch.LongTensor(data['expressions']).to(device)
         loss = expression_classification_fn(result,expected)
+        torch.save(model.state_dict(), f'{epoch}model.pth')
         loss.backward()
         optimizer.step()
         loop.set_description(f"Epoch [{epoch+1}/{epochs}]")
@@ -72,14 +73,10 @@ for epoch in range(epochs):
         # total += expected.size(0)
         # correct += result.eq(expected).sum().item()
         wandb.log({
-            "Expected": str(expected),
-            "Result": str(result),
             "sum": result[0].sum()
-            
         })
         wandb.log({
            "epoch": epoch+1,
              "train_loss": loss.item()
         })
 torch.save(model.state_dict(), 'model.pth')
-

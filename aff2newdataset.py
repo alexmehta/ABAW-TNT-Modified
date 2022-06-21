@@ -46,7 +46,7 @@ class Aff2CompDatasetNew(Dataset):
                 image_path = os.path.join(self.root_dir,"extracted",folder,"mask",image_list[z])
                 mask_img = Image.open(image_path)
                 # print(image_path)
-                mask_img.save(f"{cnt}.jpg")
+                # mask_img.save(f"{cnt}.jpg")
                 try:
                     clip[cnt, :, :, 3] = np.array(mask_img)
                     # print("worked fine")
@@ -56,7 +56,7 @@ class Aff2CompDatasetNew(Dataset):
         # print(type(clip)) 
         return  self.clip_transform(clip)
 
-    def __init__(self,root_dir='',mtl_path = 'mtl_data/'):
+    def __init__(self,root_dir='',mtl_path = 'mtl_data/',test_set = False):
         super(Aff2CompDatasetNew,self).__init__()
         #file lists
         self.root_dir = root_dir
@@ -109,6 +109,8 @@ class Aff2CompDatasetNew(Dataset):
 
         train_csv = os.path.join(mtl_path, "train_set.txt" )
         test_csv = os.path.join(mtl_path, "test_set.txt" )
+        if(test_set):
+            train_csv = test_csv
         self.dataset = []
         self.dataset += self.create_inputs(train_csv)
         self.dataset = [x for x in self.dataset if x['expressions']!=-1]
