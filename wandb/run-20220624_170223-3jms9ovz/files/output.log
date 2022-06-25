@@ -1,0 +1,26 @@
+
+cuda
+/home/alex/.local/lib/python3.8/site-packages/torchaudio/functional/functional.py:357: UserWarning: At least one mel filterbank has all zero values. The value for `n_mels` (128) may be set too high. Or, the value for `n_freqs` (513) may be set too low.
+  warnings.warn(
+
+[34m[1mwandb[39m[22m: [32m[41mERROR[39m[49m wandb.Video requires moviepy and imageio when passing raw data.  Install with "pip install moviepy imageio"
+Traceback (most recent call last):
+  File "/home/alex/detection/ABAW2020TNT-Modified/train.py", line 102, in <module>
+    "videos":wandb.Video(x['clip'].detach().cpu()),
+  File "/home/alex/.local/lib/python3.8/site-packages/wandb/sdk/data_types/video.py", line 126, in __init__
+    self.encode()
+  File "/home/alex/.local/lib/python3.8/site-packages/wandb/sdk/data_types/video.py", line 129, in encode
+    mpy = util.get_module(
+  File "/home/alex/.local/lib/python3.8/site-packages/wandb/util.py", line 307, in get_module
+    raise wandb.Error(required)
+wandb.errors.Error: wandb.Video requires moviepy and imageio when passing raw data.  Install with "pip install moviepy imageio"
+Traceback (most recent call last):
+  File "/home/alex/detection/ABAW2020TNT-Modified/train.py", line 102, in <module>
+    "videos":wandb.Video(x['clip'].detach().cpu()),
+  File "/home/alex/.local/lib/python3.8/site-packages/wandb/sdk/data_types/video.py", line 126, in __init__
+    self.encode()
+  File "/home/alex/.local/lib/python3.8/site-packages/wandb/sdk/data_types/video.py", line 129, in encode
+    mpy = util.get_module(
+  File "/home/alex/.local/lib/python3.8/site-packages/wandb/util.py", line 307, in get_module
+    raise wandb.Error(required)
+wandb.errors.Error: wandb.Video requires moviepy and imageio when passing raw data.  Install with "pip install moviepy imageio"

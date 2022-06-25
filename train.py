@@ -1,6 +1,7 @@
 from cv2 import exp
 import torch
 from torch.utils.data.sampler import Sampler
+import torch.nn.functional as F 
 from torch.utils.data.dataloader import DataLoader
 import numpy as np
 from tsav import TwoStreamAuralVisualModel
@@ -22,7 +23,7 @@ else:
 
 # device = torch.device("cpu")
 
-batch_size = 22 
+batch_size =  28
 save_model_path = '/home/alex/Desktop/TSAV_Sub4_544k.pth.tar' # path to the model
 database_path = 'aff2_processed/'  # path where the database was created (images, audio...) see create_database.py
 epochs = 10 
@@ -44,7 +45,7 @@ optimizer = torch.optim.SGD(model.parameters(),lr=0.001,momentum=0.9)
 # and arousal estimation. We divide each loss by the amount
 # of labeled samples in the current mini-batch and use the sum
 # as training objective.
-# au_detection_metric = nn.BCELoss()
+au_detection_metric = nn.BCEWithLogitsLoss()
 # va_metrics = audtorch.metrics.functional.concordance_cc
 expression_classification_fn = nn.CrossEntropyLoss()
 wandb.watch(model)
@@ -54,29 +55,49 @@ for epoch in range(epochs):
     model.train()
     loop =tqdm(train_loader,leave=False)
     for data in loop:
+
+        optimizer.zero_grad()
         if(int(data['expressions'][0])==-1):
             continue
         if('clip' not in data):
             continue
         x = {}
         x['clip'] = data['clip'].to(device)
-        optimizer.zero_grad()
-        result = model(x)
-        expected = torch.LongTensor(data['expressions']).to(device)
-        loss = expression_classification_fn(result,expected)
-        torch.save(model.state_dict(), f'{epoch}model.pth')
+        result = model(x).to(device)
+        expected = torch.LongTensor(data['expressions']).to(device)        
+        loss_exp = expression_classification_fn(result[:,0:8],expected)
+        au0 = torch.LongTensor(data['au0']).to(device)
+        au1 = torch.LongTensor(data['au1']).to(device)
+        au2 = torch.LongTensor(data['au2']).to(device)
+        au3 = torch.LongTensor(data['au3']).to(device)
+        au4 = torch.LongTensor(data['au4']).to(device)
+        au5 = torch.LongTensor(data['au5']).to(device)
+        au6 = torch.LongTensor(data['au6']).to(device)
+        au7 = torch.LongTensor(data['au7']).to(device)
+        au8 = torch.LongTensor(data['au8']).to(device)
+        au9 = torch.LongTensor(data['au9']).to(device)
+        au10 = torch.LongTensor(data['au10']).to(device)
+        au11 = torch.LongTensor(data['au11']).to(device)
+        torch.add(au_detection_metric(result[:,8],au0.float()), loss_exp)
+        torch.add(au_detection_metric(result[:,9],au1.float()), loss_exp)
+        torch.add(au_detection_metric(result[:,10],au2.float()), loss_exp)
+        torch.add(au_detection_metric(result[:,11],au3.float()), loss_exp)
+        torch.add(au_detection_metric(result[:,12],au4.float()), loss_exp)
+        torch.add(au_detection_metric(result[:,13],au5.float()), loss_exp)
+        torch.add(au_detection_metric(result[:,14],au6.float()), loss_exp)
+        torch.add(au_detection_metric(result[:,15],au7.float()), loss_exp)
+        torch.add(au_detection_metric(result[:,16],au8.float()), loss_exp)
+        torch.add(au_detection_metric(result[:,17],au9.float()), loss_exp)
+        torch.add(au_detection_metric(result[:,18],au10.float()), loss_exp)
+        torch.add(au_detection_metric(result[:,19],au11.float()), loss_exp)
+        loss = loss_exp
         loss.backward()
         optimizer.step()
         loop.set_description(f"Epoch [{epoch+1}/{epochs}]")
         loop.set_postfix(loss=loss.item())
-        # print(result[1].sum())
-        # total += expected.size(0)
-        # correct += result.eq(expected).sum().item()
-        wandb.log({
-            "sum": result[0].sum()
-        })
+        torch.save(model.state_dict(), f'{epoch}model.pth')
         wandb.log({
            "epoch": epoch+1,
-             "train_loss": loss.item()
+           "train_loss": loss.item(),
         })
 torch.save(model.state_dict(), 'model.pth')

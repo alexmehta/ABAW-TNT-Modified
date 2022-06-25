@@ -1,0 +1,12 @@
+
+cuda
+/home/alex/.local/lib/python3.8/site-packages/torchaudio/functional/functional.py:357: UserWarning: At least one mel filterbank has all zero values. The value for `n_mels` (128) may be set too high. Or, the value for `n_freqs` (513) may be set too low.
+  warnings.warn(
+Traceback (most recent call last):
+  File "/home/alex/detection/ABAW2020TNT-Modified/train.py", line 69, in <module>
+    torch.add(au_detection_metric(result[8],torch.cuda.LongTensor(data['au0'])), loss_exp)
+ValueError: too many dimensions 'str'
+Traceback (most recent call last):
+  File "/home/alex/detection/ABAW2020TNT-Modified/train.py", line 69, in <module>
+    torch.add(au_detection_metric(result[8],torch.cuda.LongTensor(data['au0'])), loss_exp)
+ValueError: too many dimensions 'str'

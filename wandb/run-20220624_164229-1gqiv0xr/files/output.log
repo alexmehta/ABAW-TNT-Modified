@@ -1,0 +1,20 @@
+
+cuda
+/home/alex/.local/lib/python3.8/site-packages/torchaudio/functional/functional.py:357: UserWarning: At least one mel filterbank has all zero values. The value for `n_mels` (128) may be set too high. Or, the value for `n_freqs` (513) may be set too low.
+  warnings.warn(
+Traceback (most recent call last):
+  File "/home/alex/detection/ABAW2020TNT-Modified/train.py", line 31, in <module>
+    train_set = Aff2CompDatasetNew(root_dir='aff2_processed')
+  File "/home/alex/detection/ABAW2020TNT-Modified/aff2newdataset.py", line 116, in __init__
+    self.dataset += self.create_inputs(train_csv)
+  File "/home/alex/detection/ABAW2020TNT-Modified/aff2newdataset.py", line 148, in create_inputs
+    expected_output['action_units'] = int(action_units)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'list'
+Traceback (most recent call last):
+  File "/home/alex/detection/ABAW2020TNT-Modified/train.py", line 31, in <module>
+    train_set = Aff2CompDatasetNew(root_dir='aff2_processed')
+  File "/home/alex/detection/ABAW2020TNT-Modified/aff2newdataset.py", line 116, in __init__
+    self.dataset += self.create_inputs(train_csv)
+  File "/home/alex/detection/ABAW2020TNT-Modified/aff2newdataset.py", line 148, in create_inputs
+    expected_output['action_units'] = int(action_units)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'list'

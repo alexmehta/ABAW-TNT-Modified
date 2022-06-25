@@ -70,7 +70,7 @@ class TwoStreamAuralVisualModel(nn.Module):
         #                                             out_features=15))
         self.fc = self.fc = nn.Sequential(nn.Dropout(0.0),nn.ReLU(),
                                           nn.Linear(in_features=self.video_model.r2plus1d.fc._modules['1'].in_features,
-                                                    out_features=8))
+                                                    out_features=8+12))
  
         # self.modes = ['clip', 'audio']
         self.modes = ['clip']
@@ -89,4 +89,4 @@ class TwoStreamAuralVisualModel(nn.Module):
         features = video_model_features
         out = self.fc(features)
         # print(out.size())
-        return features
+        return out 

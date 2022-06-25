@@ -17,6 +17,7 @@ import logging
 
 from torchvision import transforms
 import copy
+
 class Aff2CompDatasetNew(Dataset):
     # this code here is very inefficent (but works well). 
     def add_video(self,info,extracted_frames_list,transform=True):
@@ -108,7 +109,7 @@ class Aff2CompDatasetNew(Dataset):
         self.audio_spec_transform = ComposeWithInvert([AmpToDB(), Normalize(mean=[-14.8], std=[19.895])])
 
         train_csv = os.path.join(mtl_path, "train_set.txt" )
-        test_csv = os.path.join(mtl_path, "test_set.txt" )
+        test_csv = os.path.join(mtl_path, "validation_set.txt" )
         if(test_set):
             train_csv = test_csv
         self.dataset = []
@@ -144,7 +145,7 @@ class Aff2CompDatasetNew(Dataset):
             expected_output['valience'] = valience
             expected_output['arousal'] = arousal
             expected_output['expressions'] = int(expressions)
-            expected_output['action_units'] = action_units
+            expected_output['action_units'] = [int(i) for i in action_units]
             # expected_output['fps'] = self.get_fps(self.find_video(expected_output['vid_name']))
             outputs.append(expected_output)
         self.time_stamps = []
@@ -168,6 +169,19 @@ class Aff2CompDatasetNew(Dataset):
             dict['clip'] = torch.zeros(4,8,112,112,dtype=torch.float)
         
         dict['expressions'] = d['expressions']
+        dict['action_units'] = d['action_units']
+        dict['au0'] = dict['action_units'][0]
+        dict['au1'] = dict['action_units'][1]
+        dict['au2'] = dict['action_units'][2]
+        dict['au3'] = dict['action_units'][3]
+        dict['au4'] = dict['action_units'][4]
+        dict['au5'] = dict['action_units'][5]
+        dict['au6'] = dict['action_units'][6]
+        dict['au7'] = dict['action_units'][7]
+        dict['au8'] = dict['action_units'][8]
+        dict['au9'] = dict['action_units'][9]
+        dict['au10'] = dict['action_units'][10]
+        dict['au11'] = dict['action_units'][11]
         return dict
     def __len__(self):
         return len(self.dataset)
@@ -200,3 +214,6 @@ class Aff2CompDatasetNew(Dataset):
             del self.dataset[index]
         except:
             pass
+if __name__ == "__main__":
+    train_set = Aff2CompDatasetNew(root_dir='aff2_processed')
+    print(train_set.__getitem__(3))

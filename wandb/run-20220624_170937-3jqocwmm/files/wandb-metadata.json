@@ -1,0 +1,24 @@
+{
+    "os": "Linux-5.4.0-121-generic-x86_64-with-glibc2.29",
+    "python": "3.8.10",
+    "heartbeatAt": "2022-06-25T00:09:38.155185",
+    "startedAt": "2022-06-25T00:09:37.116152",
+    "docker": null,
+    "gpu": "NVIDIA GeForce RTX 3060",
+    "gpu_count": 1,
+    "cpu_count": 16,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "/home/alex/detection/ABAW2020TNT-Modified/train.py",
+    "codePath": "train.py",
+    "git": {
+        "remote": "git@github.com:alexmehta/ABAW-TNT-Modified.git",
+        "commit": "6cd5c29e6390693b2511e12f8792b3ed046b54d8"
+    },
+    "email": "alexandermehta@outlook.com",
+    "root": "/home/alex/detection/ABAW2020TNT-Modified",
+    "host": "alex-mint",
+    "username": "alex",
+    "executable": "/bin/python3"
+}

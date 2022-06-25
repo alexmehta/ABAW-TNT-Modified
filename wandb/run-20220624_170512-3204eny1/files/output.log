@@ -1,0 +1,30 @@
+
+cuda
+/home/alex/.local/lib/python3.8/site-packages/torchaudio/functional/functional.py:357: UserWarning: At least one mel filterbank has all zero values. The value for `n_mels` (128) may be set too high. Or, the value for `n_freqs` (513) may be set too low.
+  warnings.warn(
+
+Epoch [1/10]:   0%|                                                                                                                                         | 0/4206 [00:01<?, ?it/s, loss=2.22]
+Traceback (most recent call last):
+  File "/home/alex/detection/ABAW2020TNT-Modified/train.py", line 103, in <module>
+    "videos":wandb.Image((x['clip'].detach().cpu())),
+  File "/home/alex/.local/lib/python3.8/site-packages/wandb/sdk/data_types/image.py", line 145, in __init__
+    self._initialize_from_data(data_or_path, mode)
+  File "/home/alex/.local/lib/python3.8/site-packages/wandb/sdk/data_types/image.py", line 264, in _initialize_from_data
+    data = vis_util.make_grid(data, normalize=True)
+  File "/home/alex/.local/lib/python3.8/site-packages/torch/autograd/grad_mode.py", line 27, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/alex/.local/lib/python3.8/site-packages/torchvision/utils.py", line 106, in make_grid
+    grid.narrow(1, y * height + padding, height - padding).narrow(  # type: ignore[attr-defined]
+RuntimeError: The size of tensor a (8) must match the size of tensor b (112) at non-singleton dimension 2
+Traceback (most recent call last):
+  File "/home/alex/detection/ABAW2020TNT-Modified/train.py", line 103, in <module>
+    "videos":wandb.Image((x['clip'].detach().cpu())),
+  File "/home/alex/.local/lib/python3.8/site-packages/wandb/sdk/data_types/image.py", line 145, in __init__
+    self._initialize_from_data(data_or_path, mode)
+  File "/home/alex/.local/lib/python3.8/site-packages/wandb/sdk/data_types/image.py", line 264, in _initialize_from_data
+    data = vis_util.make_grid(data, normalize=True)
+  File "/home/alex/.local/lib/python3.8/site-packages/torch/autograd/grad_mode.py", line 27, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/alex/.local/lib/python3.8/site-packages/torchvision/utils.py", line 106, in make_grid
+    grid.narrow(1, y * height + padding, height - padding).narrow(  # type: ignore[attr-defined]
+RuntimeError: The size of tensor a (8) must match the size of tensor b (112) at non-singleton dimension 2
