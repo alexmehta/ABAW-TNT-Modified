@@ -142,8 +142,8 @@ class Aff2CompDatasetNew(Dataset):
             action_units = row[4:]
             expected_output = {}
             expected_output['vid_name'] = vid_name
-            expected_output['valience'] = valience
-            expected_output['arousal'] = arousal
+            expected_output['valience'] = float(valience)
+            expected_output['arousal'] = float(arousal)
             expected_output['expressions'] = int(expressions)
             expected_output['action_units'] = [int(i) for i in action_units]
             # expected_output['fps'] = self.get_fps(self.find_video(expected_output['vid_name']))
@@ -182,6 +182,8 @@ class Aff2CompDatasetNew(Dataset):
         dict['au9'] = dict['action_units'][9]
         dict['au10'] = dict['action_units'][10]
         dict['au11'] = dict['action_units'][11]
+        dict['valience'] = d['valience']
+        dict['arousal'] = d['arousal']
         return dict
     def __len__(self):
         return len(self.dataset)
