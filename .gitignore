@@ -6,3 +6,4 @@ mtl_data
 videos
 .vscode
 *.pth
+wandb

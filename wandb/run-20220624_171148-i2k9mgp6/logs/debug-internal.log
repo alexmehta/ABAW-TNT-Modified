@@ -271,3 +271,144 @@
 2022-06-24 17:13:41,012 INFO    SenderThread:37526 [sender.py:_save_file():949] saving file wandb-summary.json with policy end
 2022-06-24 17:13:41,553 INFO    Thread-7  :37526 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220624_171148-i2k9mgp6/files/wandb-summary.json
 2022-06-24 17:13:42,553 INFO    Thread-7  :37526 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220624_171148-i2k9mgp6/files/output.log
+2022-06-24 17:13:43,966 DEBUG   HandlerThread:37526 [handler.py:handle_request():141] handle_request: partial_history
+2022-06-24 17:13:43,967 DEBUG   SenderThread:37526 [sender.py:send():235] send: history
+2022-06-24 17:13:43,967 DEBUG   SenderThread:37526 [sender.py:send():235] send: summary
+2022-06-24 17:13:43,967 INFO    SenderThread:37526 [sender.py:_save_file():949] saving file wandb-summary.json with policy end
+2022-06-24 17:13:44,554 INFO    Thread-7  :37526 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220624_171148-i2k9mgp6/files/output.log
+2022-06-24 17:13:44,554 INFO    Thread-7  :37526 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220624_171148-i2k9mgp6/files/wandb-summary.json
+2022-06-24 17:13:46,555 INFO    Thread-7  :37526 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220624_171148-i2k9mgp6/files/output.log
+2022-06-24 17:13:47,281 DEBUG   HandlerThread:37526 [handler.py:handle_request():141] handle_request: partial_history
+2022-06-24 17:13:47,282 DEBUG   SenderThread:37526 [sender.py:send():235] send: history
+2022-06-24 17:13:47,283 DEBUG   SenderThread:37526 [sender.py:send():235] send: summary
+2022-06-24 17:13:47,296 INFO    SenderThread:37526 [sender.py:_save_file():949] saving file wandb-summary.json with policy end
+2022-06-24 17:13:47,555 INFO    Thread-7  :37526 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220624_171148-i2k9mgp6/files/wandb-summary.json
+2022-06-24 17:13:48,555 INFO    Thread-7  :37526 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220624_171148-i2k9mgp6/files/output.log
+2022-06-24 17:13:48,643 DEBUG   SenderThread:37526 [sender.py:send():235] send: stats
+2022-06-24 17:13:50,411 DEBUG   HandlerThread:37526 [handler.py:handle_request():141] handle_request: partial_history
+2022-06-24 17:13:50,412 DEBUG   SenderThread:37526 [sender.py:send():235] send: history
+2022-06-24 17:13:50,412 DEBUG   SenderThread:37526 [sender.py:send():235] send: summary
+2022-06-24 17:13:50,467 INFO    SenderThread:37526 [sender.py:_save_file():949] saving file wandb-summary.json with policy end
+2022-06-24 17:13:50,556 INFO    Thread-7  :37526 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220624_171148-i2k9mgp6/files/output.log
+2022-06-24 17:13:50,556 INFO    Thread-7  :37526 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220624_171148-i2k9mgp6/files/wandb-summary.json
+2022-06-24 17:13:50,835 DEBUG   HandlerThread:37526 [handler.py:handle_request():141] handle_request: stop_status
+2022-06-24 17:13:50,836 DEBUG   SenderThread:37526 [sender.py:send_request():249] send_request: stop_status
+2022-06-24 17:13:52,557 INFO    Thread-7  :37526 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220624_171148-i2k9mgp6/files/output.log
+2022-06-24 17:13:53,460 DEBUG   HandlerThread:37526 [handler.py:handle_request():141] handle_request: partial_history
+2022-06-24 17:13:53,460 DEBUG   SenderThread:37526 [sender.py:send():235] send: history
+2022-06-24 17:13:53,461 DEBUG   SenderThread:37526 [sender.py:send():235] send: summary
+2022-06-24 17:13:53,461 INFO    SenderThread:37526 [sender.py:_save_file():949] saving file wandb-summary.json with policy end
+2022-06-24 17:13:53,557 INFO    Thread-7  :37526 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220624_171148-i2k9mgp6/files/wandb-summary.json
+2022-06-24 17:13:54,557 INFO    Thread-7  :37526 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220624_171148-i2k9mgp6/files/output.log
+2022-06-24 17:13:56,558 INFO    Thread-7  :37526 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220624_171148-i2k9mgp6/files/output.log
+2022-06-24 17:13:56,648 DEBUG   HandlerThread:37526 [handler.py:handle_request():141] handle_request: partial_history
+2022-06-24 17:13:56,649 DEBUG   SenderThread:37526 [sender.py:send():235] send: history
+2022-06-24 17:13:56,650 DEBUG   SenderThread:37526 [sender.py:send():235] send: summary
+2022-06-24 17:13:56,650 INFO    SenderThread:37526 [sender.py:_save_file():949] saving file wandb-summary.json with policy end
+2022-06-24 17:13:57,559 INFO    Thread-7  :37526 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220624_171148-i2k9mgp6/files/wandb-summary.json
+2022-06-24 17:13:58,559 INFO    Thread-7  :37526 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220624_171148-i2k9mgp6/files/output.log
+2022-06-24 17:13:59,713 DEBUG   HandlerThread:37526 [handler.py:handle_request():141] handle_request: partial_history
+2022-06-24 17:13:59,714 DEBUG   SenderThread:37526 [sender.py:send():235] send: history
+2022-06-24 17:13:59,715 DEBUG   SenderThread:37526 [sender.py:send():235] send: summary
+2022-06-24 17:13:59,717 INFO    SenderThread:37526 [sender.py:_save_file():949] saving file wandb-summary.json with policy end
+2022-06-24 17:14:00,560 INFO    Thread-7  :37526 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220624_171148-i2k9mgp6/files/output.log
+2022-06-24 17:14:00,560 INFO    Thread-7  :37526 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220624_171148-i2k9mgp6/files/wandb-summary.json
+2022-06-24 17:14:02,560 INFO    Thread-7  :37526 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220624_171148-i2k9mgp6/files/output.log
+2022-06-24 17:14:02,591 DEBUG   HandlerThread:37526 [handler.py:handle_request():141] handle_request: partial_history
+2022-06-24 17:14:02,592 DEBUG   SenderThread:37526 [sender.py:send():235] send: history
+2022-06-24 17:14:02,592 DEBUG   SenderThread:37526 [sender.py:send():235] send: summary
+2022-06-24 17:14:02,593 INFO    SenderThread:37526 [sender.py:_save_file():949] saving file wandb-summary.json with policy end
+2022-06-24 17:14:03,561 INFO    Thread-7  :37526 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220624_171148-i2k9mgp6/files/wandb-summary.json
+2022-06-24 17:14:04,561 INFO    Thread-7  :37526 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220624_171148-i2k9mgp6/files/output.log
+2022-06-24 17:14:05,647 DEBUG   HandlerThread:37526 [handler.py:handle_request():141] handle_request: partial_history
+2022-06-24 17:14:05,648 DEBUG   SenderThread:37526 [sender.py:send():235] send: history
+2022-06-24 17:14:05,649 DEBUG   SenderThread:37526 [sender.py:send():235] send: summary
+2022-06-24 17:14:05,649 INFO    SenderThread:37526 [sender.py:_save_file():949] saving file wandb-summary.json with policy end
+2022-06-24 17:14:06,016 DEBUG   HandlerThread:37526 [handler.py:handle_request():141] handle_request: stop_status
+2022-06-24 17:14:06,016 DEBUG   SenderThread:37526 [sender.py:send_request():249] send_request: stop_status
+2022-06-24 17:14:06,562 INFO    Thread-7  :37526 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220624_171148-i2k9mgp6/files/output.log
+2022-06-24 17:14:06,562 INFO    Thread-7  :37526 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220624_171148-i2k9mgp6/files/wandb-summary.json
+2022-06-24 17:14:08,562 INFO    Thread-7  :37526 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220624_171148-i2k9mgp6/files/output.log
+2022-06-24 17:14:08,955 DEBUG   HandlerThread:37526 [handler.py:handle_request():141] handle_request: partial_history
+2022-06-24 17:14:08,956 DEBUG   SenderThread:37526 [sender.py:send():235] send: history
+2022-06-24 17:14:08,956 DEBUG   SenderThread:37526 [sender.py:send():235] send: summary
+2022-06-24 17:14:08,957 INFO    SenderThread:37526 [sender.py:_save_file():949] saving file wandb-summary.json with policy end
+2022-06-24 17:14:09,563 INFO    Thread-7  :37526 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220624_171148-i2k9mgp6/files/wandb-summary.json
+2022-06-24 17:14:10,563 INFO    Thread-7  :37526 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220624_171148-i2k9mgp6/files/output.log
+2022-06-24 17:14:11,905 DEBUG   HandlerThread:37526 [handler.py:handle_request():141] handle_request: partial_history
+2022-06-24 17:14:11,905 DEBUG   SenderThread:37526 [sender.py:send():235] send: history
+2022-06-24 17:14:11,906 DEBUG   SenderThread:37526 [sender.py:send():235] send: summary
+2022-06-24 17:14:11,906 INFO    SenderThread:37526 [sender.py:_save_file():949] saving file wandb-summary.json with policy end
+2022-06-24 17:14:12,564 INFO    Thread-7  :37526 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220624_171148-i2k9mgp6/files/output.log
+2022-06-24 17:14:12,565 INFO    Thread-7  :37526 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220624_171148-i2k9mgp6/files/wandb-summary.json
+2022-06-24 17:14:14,565 INFO    Thread-7  :37526 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220624_171148-i2k9mgp6/files/output.log
+2022-06-24 17:14:15,131 DEBUG   HandlerThread:37526 [handler.py:handle_request():141] handle_request: partial_history
+2022-06-24 17:14:15,131 DEBUG   SenderThread:37526 [sender.py:send():235] send: history
+2022-06-24 17:14:15,132 DEBUG   SenderThread:37526 [sender.py:send():235] send: summary
+2022-06-24 17:14:15,278 INFO    SenderThread:37526 [sender.py:_save_file():949] saving file wandb-summary.json with policy end
+2022-06-24 17:14:15,565 INFO    Thread-7  :37526 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220624_171148-i2k9mgp6/files/wandb-summary.json
+2022-06-24 17:14:16,565 INFO    Thread-7  :37526 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220624_171148-i2k9mgp6/files/output.log
+2022-06-24 17:14:18,376 DEBUG   HandlerThread:37526 [handler.py:handle_request():141] handle_request: partial_history
+2022-06-24 17:14:18,377 DEBUG   SenderThread:37526 [sender.py:send():235] send: history
+2022-06-24 17:14:18,378 DEBUG   SenderThread:37526 [sender.py:send():235] send: summary
+2022-06-24 17:14:18,378 INFO    SenderThread:37526 [sender.py:_save_file():949] saving file wandb-summary.json with policy end
+2022-06-24 17:14:18,566 INFO    Thread-7  :37526 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220624_171148-i2k9mgp6/files/output.log
+2022-06-24 17:14:18,567 INFO    Thread-7  :37526 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220624_171148-i2k9mgp6/files/wandb-summary.json
+2022-06-24 17:14:18,887 DEBUG   SenderThread:37526 [sender.py:send():235] send: stats
+2022-06-24 17:14:20,567 INFO    Thread-7  :37526 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220624_171148-i2k9mgp6/files/output.log
+2022-06-24 17:14:21,155 DEBUG   HandlerThread:37526 [handler.py:handle_request():141] handle_request: stop_status
+2022-06-24 17:14:21,155 DEBUG   SenderThread:37526 [sender.py:send_request():249] send_request: stop_status
+2022-06-24 17:14:21,402 DEBUG   HandlerThread:37526 [handler.py:handle_request():141] handle_request: partial_history
+2022-06-24 17:14:21,403 DEBUG   SenderThread:37526 [sender.py:send():235] send: history
+2022-06-24 17:14:21,403 DEBUG   SenderThread:37526 [sender.py:send():235] send: summary
+2022-06-24 17:14:21,403 INFO    SenderThread:37526 [sender.py:_save_file():949] saving file wandb-summary.json with policy end
+2022-06-24 17:14:21,567 INFO    Thread-7  :37526 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220624_171148-i2k9mgp6/files/wandb-summary.json
+2022-06-24 17:14:22,568 INFO    Thread-7  :37526 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220624_171148-i2k9mgp6/files/output.log
+2022-06-24 17:14:24,568 INFO    Thread-7  :37526 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220624_171148-i2k9mgp6/files/output.log
+2022-06-24 17:14:24,774 DEBUG   HandlerThread:37526 [handler.py:handle_request():141] handle_request: partial_history
+2022-06-24 17:14:24,775 DEBUG   SenderThread:37526 [sender.py:send():235] send: history
+2022-06-24 17:14:24,775 DEBUG   SenderThread:37526 [sender.py:send():235] send: summary
+2022-06-24 17:14:24,776 INFO    SenderThread:37526 [sender.py:_save_file():949] saving file wandb-summary.json with policy end
+2022-06-24 17:14:25,569 INFO    Thread-7  :37526 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220624_171148-i2k9mgp6/files/wandb-summary.json
+2022-06-24 17:14:26,569 INFO    Thread-7  :37526 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220624_171148-i2k9mgp6/files/output.log
+2022-06-24 17:14:27,859 DEBUG   HandlerThread:37526 [handler.py:handle_request():141] handle_request: partial_history
+2022-06-24 17:14:27,860 DEBUG   SenderThread:37526 [sender.py:send():235] send: history
+2022-06-24 17:14:27,860 DEBUG   SenderThread:37526 [sender.py:send():235] send: summary
+2022-06-24 17:14:27,860 INFO    SenderThread:37526 [sender.py:_save_file():949] saving file wandb-summary.json with policy end
+2022-06-24 17:14:28,570 INFO    Thread-7  :37526 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220624_171148-i2k9mgp6/files/output.log
+2022-06-24 17:14:28,570 INFO    Thread-7  :37526 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220624_171148-i2k9mgp6/files/wandb-summary.json
+2022-06-24 17:14:30,570 INFO    Thread-7  :37526 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220624_171148-i2k9mgp6/files/output.log
+2022-06-24 17:14:30,858 DEBUG   HandlerThread:37526 [handler.py:handle_request():141] handle_request: partial_history
+2022-06-24 17:14:30,859 DEBUG   SenderThread:37526 [sender.py:send():235] send: history
+2022-06-24 17:14:30,860 DEBUG   SenderThread:37526 [sender.py:send():235] send: summary
+2022-06-24 17:14:30,860 INFO    SenderThread:37526 [sender.py:_save_file():949] saving file wandb-summary.json with policy end
+2022-06-24 17:14:31,571 INFO    Thread-7  :37526 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220624_171148-i2k9mgp6/files/wandb-summary.json
+2022-06-24 17:14:32,571 INFO    Thread-7  :37526 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220624_171148-i2k9mgp6/files/output.log
+2022-06-24 17:14:33,937 DEBUG   HandlerThread:37526 [handler.py:handle_request():141] handle_request: partial_history
+2022-06-24 17:14:33,938 DEBUG   SenderThread:37526 [sender.py:send():235] send: history
+2022-06-24 17:14:33,938 DEBUG   SenderThread:37526 [sender.py:send():235] send: summary
+2022-06-24 17:14:33,939 INFO    SenderThread:37526 [sender.py:_save_file():949] saving file wandb-summary.json with policy end
+2022-06-24 17:14:34,572 INFO    Thread-7  :37526 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220624_171148-i2k9mgp6/files/output.log
+2022-06-24 17:14:34,572 INFO    Thread-7  :37526 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220624_171148-i2k9mgp6/files/wandb-summary.json
+2022-06-24 17:14:36,286 DEBUG   HandlerThread:37526 [handler.py:handle_request():141] handle_request: stop_status
+2022-06-24 17:14:36,286 DEBUG   SenderThread:37526 [sender.py:send_request():249] send_request: stop_status
+2022-06-24 17:14:36,572 INFO    Thread-7  :37526 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220624_171148-i2k9mgp6/files/output.log
+2022-06-24 17:14:37,145 DEBUG   HandlerThread:37526 [handler.py:handle_request():141] handle_request: partial_history
+2022-06-24 17:14:37,146 DEBUG   SenderThread:37526 [sender.py:send():235] send: history
+2022-06-24 17:14:37,146 DEBUG   SenderThread:37526 [sender.py:send():235] send: summary
+2022-06-24 17:14:37,174 INFO    SenderThread:37526 [sender.py:_save_file():949] saving file wandb-summary.json with policy end
+2022-06-24 17:14:37,573 INFO    Thread-7  :37526 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220624_171148-i2k9mgp6/files/wandb-summary.json
+2022-06-24 17:14:38,573 INFO    Thread-7  :37526 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220624_171148-i2k9mgp6/files/output.log
+2022-06-24 17:14:40,275 DEBUG   HandlerThread:37526 [handler.py:handle_request():141] handle_request: partial_history
+2022-06-24 17:14:40,277 DEBUG   SenderThread:37526 [sender.py:send():235] send: history
+2022-06-24 17:14:40,278 DEBUG   SenderThread:37526 [sender.py:send():235] send: summary
+2022-06-24 17:14:40,278 INFO    SenderThread:37526 [sender.py:_save_file():949] saving file wandb-summary.json with policy end
+2022-06-24 17:14:40,574 INFO    Thread-7  :37526 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220624_171148-i2k9mgp6/files/output.log
+2022-06-24 17:14:40,574 INFO    Thread-7  :37526 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220624_171148-i2k9mgp6/files/wandb-summary.json
+2022-06-24 17:14:42,575 INFO    Thread-7  :37526 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220624_171148-i2k9mgp6/files/output.log
+2022-06-24 17:14:43,144 DEBUG   HandlerThread:37526 [handler.py:handle_request():141] handle_request: partial_history
+2022-06-24 17:14:43,145 DEBUG   SenderThread:37526 [sender.py:send():235] send: history
+2022-06-24 17:14:43,146 DEBUG   SenderThread:37526 [sender.py:send():235] send: summary
+2022-06-24 17:14:43,146 INFO    SenderThread:37526 [sender.py:_save_file():949] saving file wandb-summary.json with policy end
+2022-06-24 17:14:43,575 INFO    Thread-7  :37526 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220624_171148-i2k9mgp6/files/wandb-summary.json
+2022-06-24 17:14:44,575 INFO    Thread-7  :37526 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/alex/detection/ABAW2020TNT-Modified/wandb/run-20220624_171148-i2k9mgp6/files/output.log
