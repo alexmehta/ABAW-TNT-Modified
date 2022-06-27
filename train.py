@@ -112,7 +112,7 @@ for epoch in range(epochs):
         loss.sum().backward()
         optimizer.step()
         loop.set_description(f"Epoch [{epoch+1}/{epochs}]")
-        loop.set_postfix(loss=loss.item())
+        loop.set_postfix(loss=loss.sum().item())
         torch.save(model.state_dict(), f'{epoch+1}_model.pth')
         wandb.log({
            "epoch": epoch+1,
