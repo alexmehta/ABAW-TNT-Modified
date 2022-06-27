@@ -89,9 +89,9 @@ for epoch in range(epochs):
         au9 = torch.LongTensor(data['au9']).to(device)
         au10 = torch.LongTensor(data['au10']).to(device)
         au11 = torch.LongTensor(data['au11']).to(device)
-        loss_exp_0 = au_detection_metric(result[:,8],au0.float()), loss_exp
-        loss_exp_1 = au_detection_metric(result[:,9],au1.float()), loss_exp
-        loss_exp_2 =au_detection_metric(result[:,10],au2.float()), loss_exp
+        loss_exp_0 = au_detection_metric(result[:,8],au0.float(), loss_exp)
+        loss_exp_1 = au_detection_metric(result[:,9],au1.float(), loss_exp)
+        loss_exp_2 =au_detection_metric(result[:,10],au2.float(), loss_exp)
         loss_exp_3 = (au_detection_metric(result[:,11],au3.float()), loss_exp)
         loss_exp_4 = (au_detection_metric(result[:,12],au4.float()), loss_exp)
         loss_exp_5= (au_detection_metric(result[:,13],au5.float()), loss_exp)
@@ -105,9 +105,11 @@ for epoch in range(epochs):
         arousal = torch.DoubleTensor(data['arousal']).to(device)        
         VALIENCE_loss = CCCLoss(result[20],valience)
         arousal_loss = CCCLoss(result[21],arousal)
-        print(arousal_loss)
+        loss = torch.Tensor(0)
         losses = [loss_exp_0,loss_exp_1,loss_exp_2,loss_exp_3,loss_exp_4,loss_exp_5,loss_exp_6,loss_exp_7,loss_exp_8,loss_exp_9,loss_exp_10,loss_exp_11,loss_exp,VALIENCE_loss,arousal_loss]
-        loss = loss_exp_0 + loss_exp_1
+        for l in losses:
+            print(type(l))
+            loss =torch.add(loss,l)
         loss.backward()
         optimizer.step()
         loop.set_description(f"Epoch [{epoch+1}/{epochs}]")
