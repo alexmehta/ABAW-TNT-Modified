@@ -23,7 +23,8 @@ class Aff2CompDatasetNew(Dataset):
     def add_video(self,info,extracted_frames_list,transform=True):
        for folder in extracted_frames_list:
             if(folder.startswith(info['vid_name'][0])):
-                image_list = os.listdir(os.path.join(self.root_dir,"extracted",folder,"mask"))
+                
+                image_list = os.listdir(os.path.join(self.root_dir,"extracted",folder))
                 image_list.sort()
                 for i,image in enumerate(image_list):
                     if(image.startswith(info['vid_name'][1])):

@@ -119,3 +119,5 @@ for epoch in range(epochs):
            "train_loss": loss.sum().item(),
         })
 torch.save(model.state_dict(), 'model.pth')
+
+#TODO loss is always 0???
