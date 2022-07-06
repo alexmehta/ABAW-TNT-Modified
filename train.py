@@ -107,9 +107,8 @@ for epoch in range(epochs):
         arousal_loss = CCCLoss(result[21],arousal)
         loss = torch.Tensor(0).to(device)
         losses = [loss_exp_0,loss_exp_1,loss_exp_2,loss_exp_3,loss_exp_4,loss_exp_5,loss_exp_6,loss_exp_7,loss_exp_8,loss_exp_9,loss_exp_10,loss_exp_11,loss_exp,VALIENCE_loss,arousal_loss]
-        for l in losses:
-            loss =torch.add(loss,l)
-        loss.sum().backward()
+        loss = sum(losses)
+        loss.backward()
         optimizer.step()
         loop.set_description(f"Epoch [{epoch+1}/{epochs}]")
         loop.set_postfix(loss=loss.sum().item())
@@ -118,6 +117,5 @@ for epoch in range(epochs):
            "epoch": epoch+1,
            "train_loss": loss.sum().item(),
         })
+        
 torch.save(model.state_dict(), 'model.pth')
-
-#TODO loss is always 0???
