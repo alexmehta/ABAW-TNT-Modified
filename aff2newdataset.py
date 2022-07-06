@@ -45,7 +45,7 @@ class Aff2CompDatasetNew(Dataset):
         if(before>=7):
                         # take last 7 frames and current frame
             for cnt,z in enumerate(range(i-8,i+1)):
-                image_path = os.path.join(self.root_dir,"extracted",folder,"mask",image_list[z])
+                image_path = os.path.join(self.root_dir,"extracted",folder,image_list[z])
                 mask_img = Image.open(image_path)
                 # print(image_path)
                 # mask_img.save(f"{cnt}.jpg")
