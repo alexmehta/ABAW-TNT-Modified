@@ -21,14 +21,14 @@ import copy
 class Aff2CompDatasetNew(Dataset):
     # this code here is very inefficent (but works well). 
     def add_video(self,info,extracted_frames_list,transform=True):
-       for folder in extracted_frames_list:
-            if(folder.startswith(info['vid_name'][0])):
+       for file in extracted_frames_list:
+            if(file.startswith(info['vid_name'][0]) and os.path.isfile(file)):
                 
-                image_list = os.listdir(os.path.join(self.root_dir,"extracted",folder))
+                image_list = os.listdir(os.path.join(self.root_dir,"extracted",file))
                 image_list.sort()
                 for i,image in enumerate(image_list):
                     if(image.startswith(info['vid_name'][1])):
-                        return self.take_mask(info, folder, image_list, i, image,transform)
+                        return self.take_mask(info, file, image_list, i, image,transform)
     def take_mask(self, info, folder, image_list, i, image,transform):
         before = i
         after = len(image_list) - i - 1
