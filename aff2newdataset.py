@@ -1,14 +1,9 @@
-from re import X
 from torch.utils.data import Dataset
 import os
 from PIL import Image
-from tqdm import tqdm
 import numpy as np
-import pickle
 import torchaudio
-import torchvision
 import math
-import subprocess
 from utils import *
 from clip_transforms import *
 from video import Video
@@ -36,7 +31,6 @@ class Aff2CompDatasetNew(Dataset):
         info['end_frame'] = after
         info['path'] = os.path.join(self.root_dir,"extracted",folder,image)
                     #this is where some experiments come in handy (how do we want to split the 8 frames) 
-
         clip= np.zeros((self.clip_len, self.input_shape[0], self.input_shape[1], 4), dtype=np.uint8)
         # print(image)
         # print(i)
@@ -56,7 +50,7 @@ class Aff2CompDatasetNew(Dataset):
                     X = 0
                     # print("there was an issue, but we just leave a blask mask :)")
         # print(type(clip)) 
-        return  self.clip_transform(clip)
+        return self.clip_transform(clip)
 
     def __init__(self,root_dir='',mtl_path = 'mtl_data/',test_set = False):
         super(Aff2CompDatasetNew,self).__init__()
@@ -168,7 +162,6 @@ class Aff2CompDatasetNew(Dataset):
         dict['clip']  = self.add_video(d,self.extracted_frames)
         if(dict['clip']==None):
             dict['clip'] = torch.zeros(4,8,112,112,dtype=torch.float)
-        
         dict['expressions'] = d['expressions']
         dict['action_units'] = d['action_units']
         dict['au0'] = dict['action_units'][0]
@@ -185,6 +178,9 @@ class Aff2CompDatasetNew(Dataset):
         dict['au11'] = dict['action_units'][11]
         dict['valience'] = d['valience']
         dict['arousal'] = d['arousal']
+        # dict['file_name'] = d['vid_name']
+        # dict['file'] = os.path.join(dict['file_name'][0],dict['file_name'][1])
+        
         return dict
     def __len__(self):
         return len(self.dataset)

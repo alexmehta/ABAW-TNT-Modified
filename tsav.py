@@ -64,29 +64,16 @@ class TwoStreamAuralVisualModel(nn.Module):
         super(TwoStreamAuralVisualModel, self).__init__()
         # self.audio_model = AudioModel(pretrained=audio_pretrained)
         self.video_model = VideoModel(num_channels=num_channels)
-        # self.fc = self.fc = nn.Sequential(nn.Dropout(0.0),
-        #                                   nn.Linear(in_features=self.audio_model.resnet.fc._modules['1'].in_features +
-        #                                                         self.video_model.r2plus1d.fc._modules['1'].in_features,
-        #                                             out_features=15))
         self.fc = nn.Sequential(nn.Dropout(0.0),
                                 nn.ReLU(),
                                 nn.Linear(in_features=self.video_model.r2plus1d.fc._modules['1'].in_features,out_features=8+12))
  
-        # self.modes = ['clip', 'audio']
         self.modes = ['clip']
-        # self.audio_model.resnet.fc = Dummy()
         self.video_model.r2plus1d.fc = Dummy()
     def forward(self, x):
-        # audio = x['audio']
         clip = x['clip']
-        # print("shape " + str(clip.shape))
-        # print(torch.max(clip))
-        # print("shape " + str(audio.shape))
-        # audio_model_features = self.audio_model(audio)
         video_model_features = self.video_model(clip)
 
-        # features = torch.cat([audio_model_features, video_model_features], dim=1)
         features = video_model_features
         out = self.fc(features)
-        # print(out.size())
         return out 

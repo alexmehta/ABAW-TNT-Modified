@@ -15,7 +15,7 @@ import wandb
 import torch.optim 
 import torch.nn as nn
 from aff2newdataset import Aff2CompDatasetNew
-
+from torchvision.utils import make_grid
 wandb.init(project="full_mtl")
 if torch.cuda.is_available():
     device = torch.device("cuda")
@@ -69,9 +69,7 @@ wandb.config = {
 #     return 
 # va_metrics = audtorch.metrics.functional.concordance_cc
 expression_classification_fn = nn.CrossEntropyLoss()
-wandb.watch(model)
 
-from torchviz import make_dot
 
 def train():
     loop =tqdm(train_loader,leave=False)
@@ -110,19 +108,38 @@ def train():
         loss_exp_9 = au_detection_metric(result[:,17],au9.float()).to(device)
         loss_exp_10 =au_detection_metric(result[:,18],au10.float()).to(device)
         loss_exp_11 = au_detection_metric(result[:,19],au11.float()).to(device)
-        loss = torch.Tensor(0).to(device)
-        losses = [loss_exp_0,loss_exp_1,loss_exp_2,loss_exp_3,loss_exp_4,loss_exp_5,loss_exp_6,loss_exp_7,loss_exp_8,loss_exp_9,loss_exp_10,loss_exp_11,loss_exp,]
-        loss = sum(losses)
-     
-        loss.backward()
+        valience = torch.DoubleTensor(data['valience']).to(device) 
+        arousal = torch.DoubleTensor(data['arousal']).to(device)        
+
+        losses = [loss_exp_0,loss_exp_1,loss_exp_2,loss_exp_3,loss_exp_4,loss_exp_5,loss_exp_6,loss_exp_7,loss_exp_8,loss_exp_9,loss_exp_10,loss_exp_11,loss_exp,valience,arousal]
+        loss = losses[0]
+        for l in losses[1:]:
+            loss = loss + l
+        loss.sum().backward()
         optimizer.step()
         loop.set_description(f"Epoch [{epoch+1}/{epochs}]")
         loop.set_postfix(loss=loss.sum().item())
         torch.save(model.state_dict(), f'{epoch+1}_model.pth')
         wandb.log({
            "epoch": epoch+1,
-           "train_loss": loss.sum().item(),
+           "Total Train Loss": loss.sum().item(),
+           "Expression Loss" : loss_exp.item(),
+           "au_0" : loss_exp_0.sum().item(),
+           "au_1": loss_exp_1.sum().item(),
+           "au_2": loss_exp_2.sum().item(),
+           "au_3" : loss_exp_3.sum().item(),
+           "au_4": loss_exp_4.sum().item(),
+           "au_5": loss_exp_5.sum().item(),
+           "au_6": loss_exp_6.sum().item(),
+           "au_7": loss_exp_7.sum().item(),
+           "au_8": loss_exp_7.sum().item(),
+           "au_9": loss_exp_7.sum().item(),
+           "au_10": loss_exp_7.sum().item(),
+           "au_11": loss_exp_7.sum().item(),
+        #    "image": wandb.Image(x['clip'][0])
         })
+#         wandb.log(
+#   {"video": wandb.Video(, fps=4, format="mp4")})
 def val():
     loop =tqdm(val_loader,leave=False)
     i = 0
@@ -162,23 +179,22 @@ def val():
         loss_exp_9 = au_detection_metric(result[:,17],au9.float()).to(device)
         loss_exp_10 =au_detection_metric(result[:,18],au10.float()).to(device)
         loss_exp_11 = au_detection_metric(result[:,19],au11.float()).to(device)
+        valience = torch.DoubleTensor(data['valience']).to(device) 
+        arousal = torch.DoubleTensor(data['arousal']).to(device)        
 
-
-        loss = torch.Tensor(0).to(device)
-        losses = [loss_exp_0,loss_exp_1,loss_exp_2,loss_exp_3,loss_exp_4,loss_exp_5,loss_exp_6,loss_exp_7,loss_exp_8,loss_exp_9,loss_exp_10,loss_exp_11,loss_exp]
-
-        loss = sum(losses)
-        if torch.isnan(loss):
-            print(losses[len(losses)-2])
+        losses = [loss_exp_0,loss_exp_1,loss_exp_2,loss_exp_3,loss_exp_4,loss_exp_5,loss_exp_6,loss_exp_7,loss_exp_8,loss_exp_9,loss_exp_10,loss_exp_11,loss_exp,valience,arousal]
+        loss = losses[0]
+        for l in losses[1:]:
+            loss = loss + l
         loop.set_description(f"Epoch [{epoch+1}/{epochs}] validation")
         loop.set_postfix(loss=loss.sum().item(),    )
         wandb.log({
            "epoch_val": epoch+1,
-           "val_loss": loss.sum().item(),
+           "val_loss_sum": loss.sum().item(),
         })
 model.train()
+wandb.watch(model)
 for epoch in range(epochs):
     val()
     train() 
-        
 torch.save(model.state_dict(), 'model.pth')
