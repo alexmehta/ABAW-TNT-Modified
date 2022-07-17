@@ -9,6 +9,8 @@ from clip_transforms import *
 from video import Video
 import csv
 import logging
+import sys
+
 
 from torchvision import transforms
 import copy
@@ -16,49 +18,44 @@ import copy
 class Aff2CompDatasetNew(Dataset):
     # this code here is very inefficent (but works well). 
     def add_video(self,info,extracted_frames_list,transform=True):
-       for file in extracted_frames_list:
-            if(file.startswith(info['vid_name'][0]) and os.path.isfile(file)):
-                
+        target = str(info['vid_name'][0])
+        for file in extracted_frames_list:
+            if(str(file).startswith(target) ):
                 image_list = os.listdir(os.path.join(self.root_dir,"extracted",file))
-                image_list.sort()
                 for i,image in enumerate(image_list):
-                    if(image.startswith(info['vid_name'][1])):
+                    if(image.startswith(info['vid_name'][1]) and "mask" not in str(file)):
                         return self.take_mask(info, file, image_list, i, image,transform)
+                        
+        return None 
     def take_mask(self, info, folder, image_list, i, image,transform):
         before = i
         after = len(image_list) - i - 1
         info['start_frame'] = before
         info['end_frame'] = after
         info['path'] = os.path.join(self.root_dir,"extracted",folder,image)
-                    #this is where some experiments come in handy (how do we want to split the 8 frames) 
-        clip= np.zeros((self.clip_len, self.input_shape[0], self.input_shape[1], 4), dtype=np.uint8)
-        # print(image)
-        # print(i)
-        # print(image_list[0])
-        # print(image_list)
+        clip= np.zeros((8, 112, 112, 3), dtype=np.uint8)
+       
         if(before>=7):
-                        # take last 7 frames and current frame
-            for cnt,z in enumerate(range(i-8,i+1)):
+        #take last 7 frames and current frame
+
+            t = 0
+            for z in range(i-7,i+1):
                 image_path = os.path.join(self.root_dir,"extracted",folder,image_list[z])
                 mask_img = Image.open(image_path)
-                # print(image_path)
-                # mask_img.save(f"{cnt}.jpg")
-                try:
-                    clip[cnt, :, :, 3] = np.array(mask_img)
-                    # print("worked fine")
-                except:
-                    X = 0
-                    # print("there was an issue, but we just leave a blask mask :)")
-        # print(type(clip)) 
+                clip[t] = np.asarray(mask_img)
+                t+=1
+        else:
+            return None
         return self.clip_transform(clip)
 
     def __init__(self,root_dir='',mtl_path = 'mtl_data/',test_set = False):
         super(Aff2CompDatasetNew,self).__init__()
+        self.bad = 0 
+        self.total = 0
         #file lists
         self.root_dir = root_dir
         self.audio_spec_transform = ComposeWithInvert([AmpToDB(), Normalize(mean=[-14.8], std=[19.895])])
-        self.clip_transform = ComposeWithInvert([NumpyToTensor(), Normalize(mean=[0.43216, 0.394666, 0.37645, 0.5],
-                                                                            std=[0.22803, 0.22145, 0.216989, 0.225])])
+        self.clip_transform = ComposeWithInvert([NumpyToTensor()])
         self.videos =   []
         self.videos += [each for each in os.listdir(root_dir) if each.endswith(".mp4")]
         self.metadata = []
@@ -159,9 +156,12 @@ class Aff2CompDatasetNew(Dataset):
     def __getitem__(self, index):
         d = self.dataset[index]
         dict = {}
+        
         dict['clip']  = self.add_video(d,self.extracted_frames)
         if(dict['clip']==None):
-            dict['clip'] = torch.zeros(4,8,112,112,dtype=torch.float)
+            # dict['clip'] = torch.ones(4,8,112,112,dtype=torch.float)
+            self.bad = self.bad+1
+        self.total = self.total+1
         dict['expressions'] = d['expressions']
         dict['action_units'] = d['action_units']
         dict['au0'] = dict['action_units'][0]
@@ -178,41 +178,19 @@ class Aff2CompDatasetNew(Dataset):
         dict['au11'] = dict['action_units'][11]
         dict['valience'] = d['valience']
         dict['arousal'] = d['arousal']
-        # dict['file_name'] = d['vid_name']
-        # dict['file'] = os.path.join(dict['file_name'][0],dict['file_name'][1])
-        
         return dict
     def __len__(self):
         return len(self.dataset)
     def __add__(self,dict):
         self.dataset.append(dict) 
-
-    def add_audio(self,dictionary):
-        # #1 get a spectrogram of entire clip
-        # #2  slice by the dict values for video so they are in perfect sync?
-        audio_file = self.find_audio(dictionary['vid_name'])
-        audio, sample_rate = torchaudio.load(audio_file)
-        audiofeatures = self.audio_transform(audio)
-        dictionary['spectrogram'] =audiofeatures[:,:,dictionary['start_frame']:dictionary['end_frame']]
-        dictionary['spectrogram'] = self.audio_spec_transform(dictionary['spectrogram'])
-        # dictionary['spectrogram'] = torchvision.functional.resize(dictionary['spectrogram'],)
-        # dictionary['spectorgram'] = self.standardize(dictionary['spectrogram'])
-        dictionary['spectrogram'] = transforms.Resize((128,2780))(dictionary['spectrogram'])
-        return dictionary['spectrogram']
-
-
-
     def get_slice(self,audio,frame_offset,length):
         return audio[:,frame_offset:frame_offset+length]
-    def find_audio(self,file_info):
-        for mp3 in self.audio_dir:
-            if(file_info[0] in mp3):
-                return os.path.join(self.root_dir ,mp3)
+  
     def __remove__(self,index):
-        try:
-            del self.dataset[index]
-        except:
-            pass
+        print(str(self.dataset.pop(index)),file=sys.stderr)
 if __name__ == "__main__":
     train_set = Aff2CompDatasetNew(root_dir='aff2_processed')
-    print(train_set.__getitem__(3))
+    i = 0
+    for i in range(len(train_set)):
+       train_set.__getitem__(i) 
+       i +=1 

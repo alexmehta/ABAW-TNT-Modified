@@ -7,3 +7,4 @@ videos
 .vscode
 *.pth
 wandb
+examples/video_A.mp4

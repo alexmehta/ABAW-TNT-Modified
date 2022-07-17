@@ -1,21 +1,13 @@
-from cmath import nan
-from cv2 import exp
-from matplotlib.pyplot import axis
+import random
 import torch
-from torch.utils.data.sampler import Sampler
-import torch.nn.functional as F 
 from torch.utils.data.dataloader import DataLoader
-import numpy as np
 from tsav import TwoStreamAuralVisualModel
-from aff2compdataset import Aff2CompDataset
-from write_labelfile import write_labelfile
-from utils import ex_from_one_hot, split_EX_VA_AU
 from tqdm import tqdm
 import wandb
 import torch.optim 
 import torch.nn as nn
 from aff2newdataset import Aff2CompDatasetNew
-from torchvision.utils import make_grid
+from torchvision.io import write_video
 wandb.init(project="full_mtl")
 if torch.cuda.is_available():
     device = torch.device("cuda")
@@ -23,26 +15,36 @@ if torch.cuda.is_available():
 else:
     device = torch.device("cpu")
     print('cpu selected!')
-
 # device = torch.device("cpu")
-
+#hyperparams
 batch_size =16
 save_model_path = '/home/alex/Desktop/TSAV_Sub4_544k.pth.tar' # path to the model
 database_path = 'aff2_processed/'  # path where the database was created (images, audio...) see create_database.py
 epochs = 30
 clip_value = 5
+#clean data function
+def clean_dataset(set):
+    z = 0
+    for i,data in enumerate(set):
+        if(data['clip']==None):
+            set.__remove__(i)
+            i = i-1
+            z+=1
+        # else:
+            
+        #     print(set.__getitem__(i) )
 
+        wandb.log({"errored data": z, "i":i,"good data": i-z})
+    print("Data cleaned: " + str(z))
+num_workers = 8
 train_set = Aff2CompDatasetNew(root_dir='aff2_processed')
-# print(len(train_set))
-# print([train_set.__len__()*0.8,(train_set.__len__()*0.2)])
+clean_dataset(train_set)
 train_set, val_set = torch.utils.data.random_split(train_set,[int(train_set.__len__()*0.95),train_set.__len__() - int((train_set.__len__()*0.95))])
-
-train_loader =DataLoader(dataset=train_set,num_workers=8,batch_size=batch_size,shuffle=True)
-
-val_loader =DataLoader(dataset=val_set,num_workers=8,batch_size=8,shuffle=True)
+train_loader =DataLoader(dataset=train_set,num_workers=num_workers,batch_size=batch_size,shuffle=True)
+val_loader =DataLoader(dataset=val_set,num_workers=num_workers,batch_size=8,shuffle=True)
 model = TwoStreamAuralVisualModel(num_channels=4).to(device)
 modes = model.modes
-learning_rate = 0.0001
+learning_rate = 0.001
 optimizer = torch.optim.SGD(model.parameters(),lr=learning_rate,momentum=0.9)
 # note about loss
 # D. Loss functions
@@ -63,13 +65,10 @@ def CCCLoss(x, y):
 wandb.config = {
   "learning_rate": learning_rate,
   "epochs": epochs,
-  "batch_size":batch_size 
+  "batch_size":batch_size ,
+  "num_workers": num_workers
 }
-# def ccc_loss(output,target):
-#     return 
-# va_metrics = audtorch.metrics.functional.concordance_cc
 expression_classification_fn = nn.CrossEntropyLoss()
-
 
 def train():
     loop =tqdm(train_loader,leave=False)
@@ -115,15 +114,38 @@ def train():
         loss = losses[0]
         for l in losses[1:]:
             loss = loss + l
+        wandb.log({
+           "Before backprop: Total Train Loss": loss.sum().item(),
+           "Before backprop: Expression Loss" : loss_exp.item(),
+           "Before backprop: valience_loss": valience.sum().item(),
+           "Before backprop: arousal_loss": arousal.sum().item(),
+           "Before backprop: au_0" : loss_exp_0.sum().item(),
+           "Before backprop: au_1": loss_exp_1.sum().item(),
+           "Before backprop: au_2": loss_exp_2.sum().item(),
+           "Before backprop: au_3" : loss_exp_3.sum().item(),
+           "Before backprop: au_4": loss_exp_4.sum().item(),
+           "Before backprop: au_5": loss_exp_5.sum().item(),
+           "Before backprop: au_6": loss_exp_6.sum().item(),
+           "Before backprop: au_7": loss_exp_7.sum().item(),
+           "Before backprop: au_8": loss_exp_7.sum().item(),
+           "Before backprop: au_9": loss_exp_7.sum().item(),
+           "Before backprop: au_10": loss_exp_7.sum().item(),
+           "Before backprop: au_11": loss_exp_7.sum().item(),
+        #    "image": wandb.Image(x['clip'][0])
+        })
         loss.sum().backward()
         optimizer.step()
         loop.set_description(f"Epoch [{epoch+1}/{epochs}]")
         loop.set_postfix(loss=loss.sum().item())
         torch.save(model.state_dict(), f'{epoch+1}_model.pth')
+        # (C,T,H,W)
+        write_video("examples/video_A.mp4",random.choice(x['clip']).cpu().permute(1,2,3,0)[:,:,:,:3],1)
         wandb.log({
            "epoch": epoch+1,
            "Total Train Loss": loss.sum().item(),
            "Expression Loss" : loss_exp.item(),
+           "valience_loss": valience.sum().item(),
+           "arousal_loss": arousal.sum().item(),
            "au_0" : loss_exp_0.sum().item(),
            "au_1": loss_exp_1.sum().item(),
            "au_2": loss_exp_2.sum().item(),
@@ -138,10 +160,11 @@ def train():
            "au_11": loss_exp_7.sum().item(),
         #    "image": wandb.Image(x['clip'][0])
         })
-#         wandb.log(
-#   {"video": wandb.Video(, fps=4, format="mp4")})
+        wandb.log(
+  {"video": wandb.Video("examples/video_A.mp4", fps=4, format="mp4")})
 def val():
     loop =tqdm(val_loader,leave=False)
+    print(type(val_loader))
     i = 0
     for data in loop:
 
@@ -197,4 +220,5 @@ wandb.watch(model)
 for epoch in range(epochs):
     val()
     train() 
-torch.save(model.state_dict(), 'model.pth')
+model.eval()
+torch.save(model.state_dict(), 'final_model.pth')
