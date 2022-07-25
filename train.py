@@ -26,25 +26,23 @@ clip_value = 5
 def clean_dataset(set):
     z = 0
     for i,data in enumerate(set):
-        if(data['clip']==None):
+        if(data == None or data['clip']==None):
             set.__remove__(i)
             i = i-1
             z+=1
-        # else:
-            
-        #     print(set.__getitem__(i) )
-
         wandb.log({"errored data": z, "i":i,"good data": i-z})
-    print("Data cleaned: " + str(z))
+    return set
 num_workers = 8
-train_set = Aff2CompDatasetNew(root_dir='aff2_processed')
-clean_dataset(train_set)
-train_set, val_set = torch.utils.data.random_split(train_set,[int(train_set.__len__()*0.95),train_set.__len__() - int((train_set.__len__()*0.95))])
+dataset = Aff2CompDatasetNew(root_dir='aff2_processed')
+print(len(dataset)) 
+dataset = clean_dataset(dataset)
+print(len(dataset)) 
+train_set, val_set = torch.utils.data.random_split(dataset,[int(dataset.__len__()*0.95),dataset.__len__() - int((dataset.__len__()*0.95))])
 train_loader =DataLoader(dataset=train_set,num_workers=num_workers,batch_size=batch_size,shuffle=True)
 val_loader =DataLoader(dataset=val_set,num_workers=num_workers,batch_size=8,shuffle=True)
 model = TwoStreamAuralVisualModel(num_channels=4).to(device)
 modes = model.modes
-learning_rate = 0.001
+learning_rate = 0.0001
 optimizer = torch.optim.SGD(model.parameters(),lr=learning_rate,momentum=0.9)
 # note about loss
 # D. Loss functions
@@ -158,16 +156,16 @@ def train():
            "au_9": loss_exp_7.sum().item(),
            "au_10": loss_exp_7.sum().item(),
            "au_11": loss_exp_7.sum().item(),
-        #    "image": wandb.Image(x['clip'][0])
         })
         wandb.log(
   {"video": wandb.Video("examples/video_A.mp4", fps=4, format="mp4")})
 def val():
+    
     loop =tqdm(val_loader,leave=False)
-    print(type(val_loader))
     i = 0
+    print(loop)
     for data in loop:
-
+        print(data)
         if(int(data['expressions'][0])==-1):
             continue
         if('clip' not in data):

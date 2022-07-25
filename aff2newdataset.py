@@ -34,10 +34,9 @@ class Aff2CompDatasetNew(Dataset):
         info['end_frame'] = after
         info['path'] = os.path.join(self.root_dir,"extracted",folder,image)
         clip= np.zeros((8, 112, 112, 3), dtype=np.uint8)
-       
+               
         if(before>=7):
         #take last 7 frames and current frame
-
             t = 0
             for z in range(i-7,i+1):
                 image_path = os.path.join(self.root_dir,"extracted",folder,image_list[z])
@@ -45,7 +44,7 @@ class Aff2CompDatasetNew(Dataset):
                 clip[t] = np.asarray(mask_img)
                 t+=1
         else:
-            return None
+            return self.clip_transform(clip)
         return self.clip_transform(clip)
 
     def __init__(self,root_dir='',mtl_path = 'mtl_data/',test_set = False):
@@ -88,18 +87,17 @@ class Aff2CompDatasetNew(Dataset):
         #transforms 
         # self.standardize = transforms.Compose([
             # transforms.Normalize([0.5,0.5,0.5])])
-        self.audio_transform = torchaudio.transforms.MelSpectrogram( sample_rate=self.sample_rate  ,n_fft=self.n_fft,
-        win_length=self.win_length,
-        hop_length=self.hop_length,
-        center=True,
-        pad_mode="reflect",
-        power=2.0,
-        norm='slaney',
-        onesided=True,
-        n_mels=self.n_mels,
-       )
-        self.audio_spec_transform = ComposeWithInvert([AmpToDB(), Normalize(mean=[-14.8], std=[19.895])])
-
+        # self.audio_transform = torchaudio.transforms.MelSpectrogram( sample_rate=self.sample_rate  ,n_fft=self.n_fft,
+        # win_length=self.win_length,
+        # hop_length=self.hop_length,
+    #     center=True,
+    #     pad_mode="reflect",
+    #     power=2.0,
+    #     norm='slaney',
+    #     onesided=True,
+    #     n_mels=self.n_mels,
+    #    )
+        # self.audio_spec_transform = ComposeWithInvert([AmpToDB(), Normalize(mean=[-14.8], std=[19.895])])
         train_csv = os.path.join(mtl_path, "train_set.txt" )
         test_csv = os.path.join(mtl_path, "validation_set.txt" )
         if(test_set):
@@ -187,7 +185,7 @@ class Aff2CompDatasetNew(Dataset):
         return audio[:,frame_offset:frame_offset+length]
   
     def __remove__(self,index):
-        print(str(self.dataset.pop(index)),file=sys.stderr)
+        self.dataset.pop(index)
 if __name__ == "__main__":
     train_set = Aff2CompDatasetNew(root_dir='aff2_processed')
     i = 0
