@@ -26,16 +26,16 @@ clip_value = 5
 def clean_dataset(set):
     z = 0
     for i,data in enumerate(set):
-        if(data == None or data['clip']==None):
+        if(data == None or data['clip']==None or data['clip'].size(dim=0)==1):
             set.__remove__(i)
-            i = i-2
+            i = i-1
             z+=1
         wandb.log({"errored data": z, "i":i,"good data": i-z})
     return set
 num_workers = 8
 dataset = Aff2CompDatasetNew(root_dir='aff2_processed')
-# dataset = clean_dataset(dataset)
-# train_set, val_set = torch.utils.data.random_split(dataset,[int(dataset.__len__()*0.95),dataset.__len__() - int((dataset.__len__()*0.95))])
+dataset = clean_dataset(dataset)
+train_set, val_set = torch.utils.data.random_split(dataset,[int(dataset.__len__()*0.95),dataset.__len__() - int((dataset.__len__()*0.95))])
 train_set = dataset
 val_set = dataset
 train_loader =DataLoader(dataset=train_set,num_workers=num_workers,batch_size=batch_size,shuffle=True)
@@ -44,15 +44,6 @@ model = TwoStreamAuralVisualModel(num_channels=3).to(device)
 modes = model.modes
 learning_rate = 0.0001
 optimizer = torch.optim.SGD(model.parameters(),lr=learning_rate,momentum=0.9)
-# note about loss
-# D. Loss functions
-# We use the same loss functions as they are defined in [17].
-# The categorical cross entropy for categorical expression clas-
-# sification. The binary cross entropy for action unit detection
-# and the concordance correlation coefficient loss for valence
-# and arousal estimation. We divide each loss by the amount
-# of labeled samples in the current mini-batch and use the sum
-# as training objective.
 au_detection_metric = nn.BCEWithLogitsLoss()
 def CCCLoss(x, y):
     z = torch.cat((x,y))
@@ -72,12 +63,14 @@ def train():
     loop =tqdm(train_loader,leave=False)
     for data in loop:
         optimizer.zero_grad()
+        
         if(int(data['expressions'][0])==-1):
             continue
         if('clip' not in data):
             continue
         x = {}
         x['clip'] = data['clip'].to(device)
+        print(x['clip'])
         result = model(x).to(device)
         expected = torch.LongTensor(data['expressions']).to(device)    
         loss_exp = expression_classification_fn(result[:,0:8],expected)
@@ -163,7 +156,6 @@ def val():
     
     loop =tqdm(val_loader,leave=False)
     i = 0
-    print(loop)
     for data in loop:
         if(int(data['expressions'][0])==-1):
             continue

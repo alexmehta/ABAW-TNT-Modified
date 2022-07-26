@@ -20,7 +20,7 @@ class Aff2CompDatasetNew(Dataset):
                     if(image.startswith(info['vid_name'][1]) and "mask" not in str(file)):
                         return self.take_mask(info, file, image_list, i, image,transform)
                         
-        return self.clip_transform(np.zeros((8, 112, 112, 3), dtype=np.uint8))
+        return self.clip_transform(np.zeros((1,1, 1, 1), dtype=np.uint8))
     def take_mask(self, info, folder, image_list, i, image,transform):
         before = i
         after = len(image_list) - i - 1
