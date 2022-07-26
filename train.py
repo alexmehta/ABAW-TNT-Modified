@@ -28,19 +28,19 @@ def clean_dataset(set):
     for i,data in enumerate(set):
         if(data == None or data['clip']==None):
             set.__remove__(i)
-            i = i-1
+            i = i-2
             z+=1
         wandb.log({"errored data": z, "i":i,"good data": i-z})
     return set
 num_workers = 8
 dataset = Aff2CompDatasetNew(root_dir='aff2_processed')
-print(len(dataset)) 
-dataset = clean_dataset(dataset)
-print(len(dataset)) 
-train_set, val_set = torch.utils.data.random_split(dataset,[int(dataset.__len__()*0.95),dataset.__len__() - int((dataset.__len__()*0.95))])
+# dataset = clean_dataset(dataset)
+# train_set, val_set = torch.utils.data.random_split(dataset,[int(dataset.__len__()*0.95),dataset.__len__() - int((dataset.__len__()*0.95))])
+train_set = dataset
+val_set = dataset
 train_loader =DataLoader(dataset=train_set,num_workers=num_workers,batch_size=batch_size,shuffle=True)
 val_loader =DataLoader(dataset=val_set,num_workers=num_workers,batch_size=8,shuffle=True)
-model = TwoStreamAuralVisualModel(num_channels=4).to(device)
+model = TwoStreamAuralVisualModel(num_channels=3).to(device)
 modes = model.modes
 learning_rate = 0.0001
 optimizer = torch.optim.SGD(model.parameters(),lr=learning_rate,momentum=0.9)
@@ -137,7 +137,7 @@ def train():
         loop.set_postfix(loss=loss.sum().item())
         torch.save(model.state_dict(), f'{epoch+1}_model.pth')
         # (C,T,H,W)
-        write_video("examples/video_A.mp4",random.choice(x['clip']).cpu().permute(1,2,3,0)[:,:,:,:3],1)
+        write_video("examples/video_A.mp4",random.choice(x['clip']).cpu().permute(1,2,3,0)[:,:,:,:],1)
         wandb.log({
            "epoch": epoch+1,
            "Total Train Loss": loss.sum().item(),
@@ -165,7 +165,6 @@ def val():
     i = 0
     print(loop)
     for data in loop:
-        print(data)
         if(int(data['expressions'][0])==-1):
             continue
         if('clip' not in data):
@@ -216,7 +215,7 @@ def val():
 model.train()
 wandb.watch(model)
 for epoch in range(epochs):
-    val()
+    # val()
     train() 
 model.eval()
 torch.save(model.state_dict(), 'final_model.pth')

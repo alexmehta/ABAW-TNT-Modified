@@ -2,18 +2,12 @@ from torch.utils.data import Dataset
 import os
 from PIL import Image
 import numpy as np
-import torchaudio
 import math
 from utils import *
 from clip_transforms import *
-from video import Video
 import csv
 import logging
-import sys
-
-
 from torchvision import transforms
-import copy
 
 class Aff2CompDatasetNew(Dataset):
     # this code here is very inefficent (but works well). 
@@ -26,7 +20,7 @@ class Aff2CompDatasetNew(Dataset):
                     if(image.startswith(info['vid_name'][1]) and "mask" not in str(file)):
                         return self.take_mask(info, file, image_list, i, image,transform)
                         
-        return None 
+        return self.clip_transform(np.zeros((8, 112, 112, 3), dtype=np.uint8))
     def take_mask(self, info, folder, image_list, i, image,transform):
         before = i
         after = len(image_list) - i - 1
@@ -190,5 +184,5 @@ if __name__ == "__main__":
     train_set = Aff2CompDatasetNew(root_dir='aff2_processed')
     i = 0
     for i in range(len(train_set)):
-       train_set.__getitem__(i) 
+       print(train_set.__getitem__(i) )
        i +=1 
