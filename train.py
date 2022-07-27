@@ -25,12 +25,17 @@ clip_value = 5
 #clean data function
 def clean_dataset(set):
     z = 0
-    for i,data in enumerate(set):
-        if(data == None or data['clip']==None or data['clip'].size(dim=0)==1):
-            set.__remove__(i)
+    removed_for_beginning = 0
+    for i in range(set.__len__()):
+        data = set.__getitem__(i) 
+        if(data == None or data['clip']==None):
             i = i-1
             z+=1
-        wandb.log({"errored data": z, "i":i,"good data": i-z})
+        elif ( torch.equal(data['clip'],torch.zeros((3,8,112,112)))):
+            i = i-1
+            removed_for_beginning = removed_for_beginning+1
+            z+=1
+        wandb.log({"errored data": z, "i":i,"good data": i-z,"removed_for_beginning":removed_for_beginning, "removed for other reason":z-removed_for_beginning})
     return set
 num_workers = 8
 dataset = Aff2CompDatasetNew(root_dir='aff2_processed')
@@ -70,7 +75,6 @@ def train():
             continue
         x = {}
         x['clip'] = data['clip'].to(device)
-        print(x['clip'])
         result = model(x).to(device)
         expected = torch.LongTensor(data['expressions']).to(device)    
         loss_exp = expression_classification_fn(result[:,0:8],expected)
@@ -100,7 +104,8 @@ def train():
         loss_exp_11 = au_detection_metric(result[:,19],au11.float()).to(device)
         valience = torch.DoubleTensor(data['valience']).to(device) 
         arousal = torch.DoubleTensor(data['arousal']).to(device)        
-
+        if(torch.equal(data['clip'],torch.zeros((3,8,112,112)))):
+            print("got through")
         losses = [loss_exp_0,loss_exp_1,loss_exp_2,loss_exp_3,loss_exp_4,loss_exp_5,loss_exp_6,loss_exp_7,loss_exp_8,loss_exp_9,loss_exp_10,loss_exp_11,loss_exp,valience,arousal]
         loss = losses[0]
         for l in losses[1:]:
@@ -130,7 +135,7 @@ def train():
         loop.set_postfix(loss=loss.sum().item())
         torch.save(model.state_dict(), f'{epoch+1}_model.pth')
         # (C,T,H,W)
-        write_video("examples/video_A.mp4",random.choice(x['clip']).cpu().permute(1,2,3,0)[:,:,:,:],1)
+        write_video("examples/video_A.mp4",random.choice(x['clip']).cpu().permute(1,2,3,0)[:,:,:,:].mul(255),1)
         wandb.log({
            "epoch": epoch+1,
            "Total Train Loss": loss.sum().item(),

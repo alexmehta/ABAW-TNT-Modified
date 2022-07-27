@@ -20,14 +20,14 @@ class Aff2CompDatasetNew(Dataset):
                     if(image.startswith(info['vid_name'][1]) and "mask" not in str(file)):
                         return self.take_mask(info, file, image_list, i, image,transform)
                         
-        return self.clip_transform(np.zeros((1,1, 1, 1), dtype=np.uint8))
+        return self.clip_transform(np.zeros((8,112, 112, 3), dtype=np.uint8))
     def take_mask(self, info, folder, image_list, i, image,transform):
         before = i
         after = len(image_list) - i - 1
         info['start_frame'] = before
         info['end_frame'] = after
         info['path'] = os.path.join(self.root_dir,"extracted",folder,image)
-        clip= np.zeros((8, 112, 112, 3), dtype=np.uint8)
+        clip= np.ones((8, 112, 112, 3), dtype=np.uint8)
                
         if(before>=7):
         #take last 7 frames and current frame
@@ -179,7 +179,7 @@ class Aff2CompDatasetNew(Dataset):
         return audio[:,frame_offset:frame_offset+length]
   
     def __remove__(self,index):
-        self.dataset.pop(index)
+        return self.dataset.pop(index)
 if __name__ == "__main__":
     train_set = Aff2CompDatasetNew(root_dir='aff2_processed')
     i = 0
